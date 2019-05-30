@@ -14,14 +14,13 @@
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+    <![endif]-->
   <?php wp_head(); ?>
   <?php //echo get_option('analytics_tracking_code');?>
   <?php //echo get_option('webmaster_tool');?>
 </head>
 
 <body <?php body_class();?> itemschope="itemscope" itemtype="http://schema.org/WebPage">
-
 <header id="header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
   <h1><?php bloginfo('name'); ?></h1>
 </header>
