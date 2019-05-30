@@ -9,7 +9,7 @@ remove_action( 'wp_head', 'wlwmanifest_link' ); // Windows Live Writer
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' ); // 前後の記事 link URL
 remove_action( 'wp_head', 'feed_links', 2 );
 remove_action( 'wp_head', 'feed_links_extra', 3 );
-
+add_theme_support('post-thumbnails');
 
 add_action('init', 'register_blog_cat_custom_post');
 function register_blog_cat_custom_post() {
@@ -28,13 +28,25 @@ function register_blog_cat_custom_post() {
 }
 
 // カスタムメニュー
-// add_action( 'init', 'my_custom_menus' );
-// function my_custom_menus() {
-//     register_nav_menus(
-//         array(
-//             'primary-menu' => __( 'ヘッダー用メニュー', 'default' ),
-//             'secondary-menu' => __( 'フッター用メニュー', 'default' ),
-//             'smartphone-menu' => __( 'スマートフォン用メニュー', 'default' )
-//         )
-//     );
-// }
+add_action( 'init', 'my_custom_menus' );
+function my_custom_menus() {
+    register_nav_menus(
+        array(
+            'primary-menu' => __( 'ヘッダー用メニュー', 'default' ),
+            'secondary-menu' => __( 'フッター用メニュー', 'default' ),
+            'smartphone-menu' => __( 'スマートフォン用メニュー', 'default' )
+        )
+    );
+}
+
+add_action('admin_print_scripts', 'admin_add_script');
+function admin_add_script() {
+    $direc = get_bloginfo( 'template_directory' );
+    wp_enqueue_script( 'admin_script', $direc .'/js/admin.js' );
+    wp_enqueue_script( 'thickbox' );
+}
+add_action('admin_head' , 'admin_add_style');
+function admin_add_style() {
+    $direc = get_bloginfo('template_directory');
+    wp_enqueue_style( 'admin-style', $direc .'/css/admin-style.css', array(), false, 'all' );
+}
