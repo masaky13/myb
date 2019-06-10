@@ -2,10 +2,6 @@ $(function($){
     // dorawer
     $(".drawer").drawer();
 
-    var content_top = $("#header").height() + 10;
-    $("#firstposts").css("top",content_top );
-    $("#content").css("top",content_top );
-
     // slick slider top
     $('.firstview').slick({
         autoplay: true,

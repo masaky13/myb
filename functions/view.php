@@ -15,6 +15,7 @@ if( !is_admin() ) {
         wp_register_script( 'iscroll', $thema_pass .'/js/iscroll.js', array('jquery-cdn'), false, true );
         wp_register_script( 'drawer', $thema_pass .'/js/drawer.min.js', array('jquery-cdn'), false, true );
         wp_register_script( 'rellax', $thema_pass .'/js/rellax.min.js', array(), false, true );
+        wp_register_script( 'uikit-icons', $thema_pass .'/js/uikit-icons.min.js', array(), false, true );
         // wp_register_script( 'custom', $thema_pass .'/js/custom.js', array('jquery-cdn'), false, true );
         wp_enqueue_script( 'custom', $thema_pass.'/js/custom.js?'.filemtime( get_stylesheet_directory().'/js/custom.js'), array('jquery-cdn'));
     }
@@ -27,6 +28,7 @@ if( !is_admin() ) {
         wp_enqueue_script( 'rellax' );
         wp_enqueue_script( 'iscroll' );
         wp_enqueue_script( 'drawer' );
+        wp_enqueue_script( 'uikit-icons' );
         wp_enqueue_script( 'custom' );
         // JSへ変数受け渡し
         $queried_object = get_queried_object();
@@ -60,6 +62,7 @@ if( !is_admin() ) {
         wp_enqueue_style('milligram', $thema_pass.'/css/milligram.min.css', array(), false, 'all');
         wp_enqueue_style('drawer', $thema_pass.'/css/drawer.min.css', array(), false, 'all');
         wp_enqueue_style('slick', $thema_pass.'/css/slick.css', array(), false, 'all');
+        wp_enqueue_style('uikit', $thema_pass.'/css/uikit.min.css', array(), false, 'all');
         // wp_enqueue_style('ionicons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), false, 'all');
         // wp_enqueue_style('style', $thema_pass.'/style.css', array(), false, 'all');
         wp_enqueue_style('style', $thema_pass.'/style.css', array(), filemtime( get_stylesheet_directory().'/style.css' ), 'all');
@@ -217,6 +220,14 @@ function get_archve_title() {
         $title = 'Archive';
     }
     return $title;
+}
+
+function text_ellipsis( $text, $count ) {
+    // 謖�ｮ壽枚蟄玲焚繧定ｶ�∴縺溷ｴ蜷域栢邊句�逅
+    if ( mb_strlen ( strip_tags ( $text ), 'utf-8' ) > $count ){
+        $text = mb_substr( str_replace( '&nbsp;', ' ', strip_tags( $text ) ), 0, $count ) . '...';
+    }
+    return $text;
 }
 
 // 記事一覧　works_introduce

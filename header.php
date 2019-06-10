@@ -22,5 +22,7 @@
 
 <body <?php body_class();?> itemschope="itemscope" itemtype="http://schema.org/WebPage">
 <header id="header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
-  <h1><?php bloginfo('name'); ?></h1>
+    <div class="inner">
+      <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+    </div>
 </header>
