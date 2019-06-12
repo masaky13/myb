@@ -15,6 +15,7 @@ if( !is_admin() ) {
         wp_register_script( 'iscroll', $thema_pass .'/js/iscroll.js', array('jquery-cdn'), false, true );
         wp_register_script( 'drawer', $thema_pass .'/js/drawer.min.js', array('jquery-cdn'), false, true );
         wp_register_script( 'rellax', $thema_pass .'/js/rellax.min.js', array(), false, true );
+        wp_register_script( 'uikit', $thema_pass .'/js/uikit.min.js', array(), false, true );
         wp_register_script( 'uikit-icons', $thema_pass .'/js/uikit-icons.min.js', array(), false, true );
         // wp_register_script( 'custom', $thema_pass .'/js/custom.js', array('jquery-cdn'), false, true );
         wp_enqueue_script( 'custom', $thema_pass.'/js/custom.js?'.filemtime( get_stylesheet_directory().'/js/custom.js'), array('jquery-cdn'));
@@ -28,6 +29,7 @@ if( !is_admin() ) {
         wp_enqueue_script( 'rellax' );
         wp_enqueue_script( 'iscroll' );
         wp_enqueue_script( 'drawer' );
+        wp_enqueue_script( 'uikit' );
         wp_enqueue_script( 'uikit-icons' );
         wp_enqueue_script( 'custom' );
         // JSへ変数受け渡し
@@ -85,6 +87,41 @@ function head_meta_index() {
         $meta = '<meta name="robots" content="'. $content .'">';
     }
     return $meta;
+}
+
+function get_global_navi() {
+    $ht = '';
+    if ( has_nav_menu( 'primary-menu' ) ) {
+        $ht = '<nav class="uk-navbar-container uk-navbar-transparent none-sp" role="navigation" itemscope="itemscope" itemtype="http://scheme.org/SiteNavigationElement">';
+        $ht .= wp_nav_menu( array(
+            'theme_location' => 'primary-menu',
+            'container' => false,
+            'menu_class' => 'uk-navbar-left uk-navbar-nav',
+            'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+            'echo' => false
+        ) );
+        $ht .= '</nav>';
+    }
+    return $ht;
+}
+
+function get_toggle_navi() {
+    $ht = '';
+    if ( has_nav_menu( 'primary-menu' ) ) {
+        $ht .= '<a href="#offcanvas-slide" class="uk-button uk-button-small" uk-icon="menu" uk-toggle></a>';
+        $ht .= '<div id="offcanvas-slide" uk-offcanvas>';
+        $ht .= '<div class="uk-offcanvas-bar">';
+        $ht .= wp_nav_menu( array(
+                'theme_location' => 'primary-menu',
+                'container' => false,
+                'menu_class' => 'uk-nav uk-nav-default',
+                'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+                'echo' => false
+            ) );
+        $ht .= '</div>';
+        $ht .= '</div>';
+    }
+    return $ht;
 }
 
 // パンくず

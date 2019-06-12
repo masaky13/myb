@@ -21,8 +21,12 @@
 </head>
 
 <body <?php body_class();?> itemschope="itemscope" itemtype="http://schema.org/WebPage">
-<header id="header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
-    <div class="inner">
-      <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
-    </div>
+<header id="header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader" uk-sticky="show-on-up: true">
+<div class="inner">
+    <div class="uk-grid-medium" uk-grid>
+      <h1 class="uk-width-1-4@m"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+      <div class="uk-width-expand@m"><?php echo get_global_navi(); ?></div>
+    </div>
+    <div class="none-pc sp-nav"><?php echo get_toggle_navi(); ?></div>
+</div>
 </header>

@@ -50,7 +50,7 @@ p {
     line-height: 1.5em;
 }
 ul,li {
-    margin: 0 0 1em;
+    margin: 0;
     padding: 0;
 }
 li {
@@ -158,24 +158,17 @@ section .title {
     z-index: 1000;
     background: #F2F2F2;
 }
-.homename { /* header & footer */
-    margin: 0;
-    padding: 0;
-    font-size: 1.4em;
-    line-height: 1.2em;
-    font-weight: bold;
+#header {
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: #F2F2F2;
 }
 @media only screen and (max-width: 960px) {
-    .homename {
-        margin: 0;
-        padding: 5px 0;
-    }
-    .homename img {
-        width: 100px;
-    }
-    .header_logo {
-        text-align: center;
-    }
+    #header {
+            text-align: center;
+        }
 }
 
 /*-- footer
