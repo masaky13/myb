@@ -1,7 +1,4 @@
 $(function($){
-    // dorawer
-    $(".drawer").drawer();
-
     // slick slider top
     $('.firstview').slick({
         autoplay: true,
@@ -10,9 +7,6 @@ $(function($){
         arrows: false,
         cssEase: 'linear'
     });
-
-    // parlx
-    var rellax = new Rellax(' .rellax ',{ center: true });
 
     // Page top
     $("#page-top").hide();

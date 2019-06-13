@@ -134,7 +134,6 @@ main {
 ------------------------------ */
 section {
     margin: 0;
-    padding: 120px 0;
 }
 section h2 {
     text-shadow: 2px 2px 6px rgba(40, 40, 40, .5);
@@ -146,29 +145,22 @@ section .title {
     section {
         margin: 0;
         width: 100%;
-        box-sizing: border-box;
     }
 }
 
 /*-- header
 ------------------------------ */
 #header {
+    position: relative;
     width: 100%;
     top: 0;
     z-index: 1000;
     background: #F2F2F2;
 }
-#header {
-    position: relative;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    background: #F2F2F2;
-}
 @media only screen and (max-width: 960px) {
     #header {
-            text-align: center;
-        }
+            text-align: center;
+        }
 }
 
 /*-- footer
@@ -186,68 +178,22 @@ footer ul {
 
 /*-- navi
 ------------------------------ */
-nav li a:hover {
-    text-decoration: none;
-}
 .pc-nav ul,
 .pc-nav li,
 .sp-nav li,
 .sp-nav ul {
     margin: 0;
 }
-.pc-nav {
-    text-align: center;
-}
-.pc-nav li {
-    display: block;
-    position: relative;
-}
-.pc-nav li a {
-    padding: 15px;
-    display: inline-block;
-    color: #FFF;
-}
-.pc-nav li a:hover {
-    color: #AAA;
-}
-.pc-nav  .sub-menu {
-    display: none;
-    position: absolute;
-    width: 100%;
-}
-.nav_fixed .pc-nav .sub-menu {
-    background: rgba(20, 20, 20, .6);
-}
-.pc-nav li:hover .sub-menu {
-    display: block;
-    animation: fade .3s linear;
-}
-.drawer-hamburger {
-    width: 2.5rem
-}
-.drawer-hamburger {
-    margin-bottom: 0;
-}
 .sp-nav {
-    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 0;
 }
-.sp-nav li {
-    font-size: 1.2em;
-    line-height: 1.5em;
-    border-bottom: 1px solid #999;
+.sp-nav-search {
+    position: absolute;
+    top: 10px;
+    right: 0;
 }
-.sp-nav li a {
-    display: block;
-    padding: 20px;
-    color: #555;
-}
-.sp-nav li .sub-menu li {
-    font-size: 1em;
-    border-top: 1px solid #CCC;
-    border-bottom: none;
-    background: #f5f5f5;
-}
-
 /*-- breadcrumb
 ------------------------------ */
 .breadcrumb {
