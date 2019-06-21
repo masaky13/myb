@@ -15,7 +15,7 @@
                     <?php endif; ?>
                 </a>
             </div>
-            <div class="post-body inner">
+            <div class="post-body uk-padding-small">
                 <div class="post-header">
                     <span class="post-date uk-text-meta" itemprop="datePublished" datetime="<?php echo esc_attr( get_the_date( DATE_ISO8601 ) ); ?>"><?php the_time('Y/m/d'); ?></span>
                     <h1 class="post-title"><?php the_title(); ?></h1>
@@ -46,7 +46,7 @@
             <?php endif; ?>
         </div>
     </article>
-    <div class="post-side inner">
+    <div class="post-side uk-padding-small">
         <h2 class="sub-title">新着記事</h2>
     </div>
 </main>

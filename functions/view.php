@@ -59,7 +59,6 @@ if( !is_admin() ) {
     function add_style() {
         $thema_pass = get_stylesheet_directory_uri();
         wp_enqueue_style('normalize', $thema_pass. '/css/normalize.css', array(), false, 'all' );
-        wp_enqueue_style('milligram', $thema_pass.'/css/milligram.min.css', array(), false, 'all');
         wp_enqueue_style('drawer', $thema_pass.'/css/drawer.min.css', array(), false, 'all');
         wp_enqueue_style('slick', $thema_pass.'/css/slick.css', array(), false, 'all');
         wp_enqueue_style('uikit', $thema_pass.'/css/uikit.min.css', array(), false, 'all');
@@ -124,13 +123,11 @@ function get_toggle_navi() {
 
 function get_toggle_navisearch() {
     $ht = '';
-    if ( has_nav_menu( 'primary-menu' ) ) {
-        $ht .= '<a href="#offcanvas-flip" class="uk-button uk-button-small" uk-icon="search" uk-toggle></a>';
-        $ht .= '<div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">';
-        $ht .= '<div class="uk-offcanvas-bar"><button class="uk-offcanvas-close" type="button" uk-close></button>search';
-        $ht .= '</div>';
-        $ht .= '</div>';
-    }
+    $ht .= '<a href="#offcanvas-flip" class="uk-button uk-button-small" uk-icon="search" uk-toggle></a>';
+    $ht .= '<div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">';
+    $ht .= '<div class="uk-offcanvas-bar"><button class="uk-offcanvas-close" type="button" uk-close></button>search';
+    $ht .= '</div>';
+    $ht .= '</div>';
     return $ht;
 }
 

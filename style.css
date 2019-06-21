@@ -34,8 +34,6 @@ h2 {
     margin: 0 0 .4em;
     padding: 0;
     color: #555;
-    font-size: 2.4em;
-    line-height: 1.5em;
 }
 h3 {
     margin: 0 0 .4em;
@@ -44,10 +42,10 @@ h3 {
     line-height: 1.5em;
 }
 p {
-    margin: 0 0 1em;
+    margin: 0 0 .4em;
     padding: 0;
-    font-size: .9em;
-    line-height: 1.5em;
+    font-size: 1.1rem;
+    line-height: 1.4em;
 }
 ul,li {
     margin: 0;
@@ -100,10 +98,6 @@ img {
 
 /*-- content setting
 ------------------------------ */
-.body-wrap {
-    max-width: 960px;
-    margin: 0 auto;
-}
 .content {
     position: relative;
     margin: 0 auto;
@@ -111,26 +105,17 @@ img {
 }
 .inner {
     margin: 0 auto;
+    width: 100%;
 }
-@media only screen and (max-width: 960px) {
-    .content {
-        max-width: 100%;
-        padding: 0;
-    }
+@media only screen and (min-width: 960px) {
     .inner {
-        width: 100%;
-        box-sizing: border-box;
+        max-width: 960px;
     }
 }
 /*-- main
 ------------------------------ */
 main {
-    padding: 30px 0;
-}
-@media only screen and (max-width: 768px) {
-    main {
-        padding: 20px 0;
-    }
+    padding: 0;
 }
 
 /*-- section
@@ -160,14 +145,11 @@ section h2 {
 /*-- footer
 ------------------------------ */
 footer {
-    padding: 20px 0 10px;
+    padding: 10px;
     position: relative;
     background: #c3c3c3;
     z-index: 5;
     text-align: center;
-}
-footer ul {
-    padding: 0;
 }
 
 /*-- navi
