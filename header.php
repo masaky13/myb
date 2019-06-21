@@ -21,6 +21,7 @@
 </head>
 
 <body <?php body_class();?> itemschope="itemscope" itemtype="http://schema.org/WebPage">
+<div class="body-wrap">
 <header id="header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader" uk-sticky="show-on-up: true">
 <div class="inner">
     <div class="uk-grid-medium" uk-grid>

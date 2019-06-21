@@ -14,7 +14,6 @@ if( !is_admin() ) {
         wp_register_script( 'slick', $thema_pass .'/js/slick.min.js', array('jquery-cdn'), false, true );
         wp_register_script( 'iscroll', $thema_pass .'/js/iscroll.js', array('jquery-cdn'), false, true );
         wp_register_script( 'drawer', $thema_pass .'/js/drawer.min.js', array('jquery-cdn'), false, true );
-        wp_register_script( 'rellax', $thema_pass .'/js/rellax.min.js', array(), false, true );
         wp_register_script( 'uikit', $thema_pass .'/js/uikit.min.js', array(), false, true );
         wp_register_script( 'uikit-icons', $thema_pass .'/js/uikit-icons.min.js', array(), false, true );
         // wp_register_script( 'custom', $thema_pass .'/js/custom.js', array('jquery-cdn'), false, true );
@@ -26,7 +25,6 @@ if( !is_admin() ) {
         wp_enqueue_script( 'lazysizes' );
         wp_enqueue_script( 'lazysizes-unveilhooks' );
         wp_enqueue_script( 'slick' );
-        wp_enqueue_script( 'rellax' );
         wp_enqueue_script( 'iscroll' );
         wp_enqueue_script( 'drawer' );
         wp_enqueue_script( 'uikit' );

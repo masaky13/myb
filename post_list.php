@@ -3,7 +3,7 @@
  * トップやアーカイブ一覧
  */
 ?>
-<div class="post-list inner" uk-grid>
+<div class="post-list" uk-grid>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
      <div class="uk-flex uk-card uk-card-default uk-grid-collapse uk-margin-small" uk-grid>
          <div class="uk-width-1-4 uk-cover-container post-image">
