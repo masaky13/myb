@@ -106,7 +106,7 @@ function get_toggle_navi() {
     $ht = '';
     if ( has_nav_menu( 'primary-menu' ) ) {
         $ht .= '<a href="#offcanvas-slide" class="uk-button uk-button-small" uk-icon="menu" uk-toggle></a>';
-        $ht .= '<div id="offcanvas-slide" uk-offcanvas="flip: true; overlay: true">';
+        $ht .= '<div id="offcanvas-slide" uk-offcanvas="overlay: true">';
         $ht .= '<div class="uk-offcanvas-bar">';
         $ht .= wp_nav_menu( array(
                 'theme_location' => 'primary-menu',
