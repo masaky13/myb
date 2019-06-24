@@ -20,6 +20,6 @@
 <div id="page-top"><a href="#wrapper"></a></div>
 <!-- ページトップへ戻る　終わり -->
 <?php wp_footer(); ?>
-</body>
 </div>
+</body>
 </html>
