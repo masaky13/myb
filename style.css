@@ -24,7 +24,7 @@ Version: 2019-05-31
 }
 body {
     background-color: rgba(219, 228, 232, 0);
-    font-family: "Century Gothic", "繝｡繧､繝ｪ繧ｪ", Meiryo, "繝偵Λ繧ｮ繝手ｧ偵ざ Pro W3", Hiragino Kaku Gothic Pro, "�ｭ�ｳ �ｰ繧ｴ繧ｷ繝�け", sans-serif;
+    font-family: "Century Gothic", "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
     color: #555;
 }
 h1 {
@@ -58,25 +58,16 @@ a {
     color: #888;
     text-decoration: none;
     transition: all .2s linear;
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    -o-transition: all .2s linear;
-    -ms-transition: all .2s linear;
 }
 a:hover {
     color: #aaa;
     text-decoration: none;
 }
 a:hover img {
-    -moz-opacity: inherit;
     opacity: inherit;
 }
 img {
     transition: all .2s linear;
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    -o-transition: all .2s linear;
-    -ms-transition: all .2s linear;
 }
 .clearfix {
     clear: both;
@@ -134,7 +125,10 @@ section h2 {
     width: 100%;
     top: 0;
     z-index: 1000;
-    background: #F2F2F2;
+    background: #c3c3c3;
+}
+#header a {
+    color: #333;
 }
 @media only screen and (max-width: 960px) {
     #header {
@@ -162,12 +156,12 @@ footer {
 }
 .sp-nav {
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 0;
 }
 .sp-nav-search {
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 0;
 }
 /*-- breadcrumb
@@ -208,8 +202,6 @@ footer {
     line-height: .8em;
     color: #555;
     box-shadow: 0px 0px 2px 1px rgba(60, 60, 60, .4);
-    -moz-box-shadow: 0px 0px 2px 1px rgba(60, 60, 60, .4);
-    -webkit-box-shadow: 0px 0px 2px 1px rgba(60, 60, 60, .4);
     opacity: 1;
 }
 #page-top a::after {
@@ -225,9 +217,13 @@ footer {
 ------------------------------ */
 .post-title {
     margin: 0 0 5px;
+    color: #333;
     font-size: 1.4rem;
     line-height: 1.3;
     font-weight: bold;
+}
+.post-title a {
+    color: #333;
 }
 .sub-title {
     margin: 0 0 10px;
@@ -329,10 +325,6 @@ footer {
     background-color: rgba(60,60,60,.4);
     z-index: 20;
     transition: all .2s linear;
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    -o-transition: all .2s linear;
-    -ms-transition: all .2s linear;
 }
 .list-style-slash span,
 .list-style-slash a {
@@ -365,13 +357,9 @@ footer {
 .link-style-boxshadow a {
     display: block;
     box-shadow: 0px 0px 3px 1px rgba(20, 20, 20, .2);
-    -moz-box-shadow: 0px 0px 3px 1px rgba(20, 20, 20, .2);
-    -webkit-box-shadow: 0px 0px 3px 1px rgba(20, 20, 20, .2);
 }
 .link-style-boxshadow:hover a {
     box-shadow: 0px 0px 10px 2px rgba(20, 20, 20, .4);
-    -moz-box-shadow: 0px 0px 10px 2px rgba(20, 20, 20, .4);
-    -webkit-box-shadow: 0px 0px 10px 2px rgba(20, 20, 20, .4);
 }
 .link-style-trmimage a {
     overflow: hidden;
@@ -408,10 +396,6 @@ footer {
     top: 0;
     left: 0;
     transition: all .2s linear;
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    -o-transition: all .2s linear;
-    -ms-transition: all .2s linear;
 }
 .icon-arrow-right a:hover::after {
     left: 5px;
@@ -424,10 +408,6 @@ footer {
     top: 0;
     left: 0;
     transition: all .2s linear;
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    -o-transition: all .2s linear;
-    -ms-transition: all .2s linear;
 }
 .icon-arrow-left a:hover::before {
     left: -5px;

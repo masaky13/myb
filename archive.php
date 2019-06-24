@@ -4,7 +4,7 @@
 <main>
     <article>
         <section class="topview c-cover">
-            <div class="inner rellax" data-rellax-speed="-2">
+            <div class="inner">
                 <h1 class="title"><?php echo get_archve_title(); ?></h1>
                 <span> (<?php echo $wp_query->found_posts; ?>)</span>
             </div><?php //.inner ?>

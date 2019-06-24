@@ -21,7 +21,7 @@
         <div class="post-info uk-card-body uk-padding-small"><?php //.post-info ?>
             <h3 class="post-title uk-card-title">
                 <?php if( wp_is_mobile() ) : ?>
-                    <?php echo text_ellipsis( get_the_title(), 22 ); ?>
+                    <?php echo text_ellipsis( get_the_title(), 27 ); ?>
                 <?php else: ?>
                     <?php echo text_ellipsis( get_the_title(), 32 ); ?>
                 <?php endif; ?>

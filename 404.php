@@ -4,7 +4,7 @@
 <article>
     <section class="topview c-cover"><!-- topview -->
         <div class="inner">
-            <div class="title rellax" data-rellax-speed="-2">
+            <div class="title">
                 <h1>404ページ</h1>
             </div>
         </div>
