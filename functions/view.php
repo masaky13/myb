@@ -11,22 +11,16 @@ if( !is_admin() ) {
         wp_register_script( 'jquery-cdn', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', array(), '1.11.3', false);
         wp_register_script( 'lazysizes', $thema_pass .'/js/lazysizes.min.js', array('jquery-cdn'), false, true );
         wp_register_script( 'lazysizes-unveilhooks', $thema_pass .'/js/ls.unveilhooks.min.js', array('jquery-cdn'), false, true );
-        wp_register_script( 'slick', $thema_pass .'/js/slick.min.js', array('jquery-cdn'), false, true );
-        wp_register_script( 'iscroll', $thema_pass .'/js/iscroll.js', array('jquery-cdn'), false, true );
-        wp_register_script( 'drawer', $thema_pass .'/js/drawer.min.js', array('jquery-cdn'), false, true );
         wp_register_script( 'uikit', $thema_pass .'/js/uikit.min.js', array(), false, true );
         wp_register_script( 'uikit-icons', $thema_pass .'/js/uikit-icons.min.js', array(), false, true );
-        // wp_register_script( 'custom', $thema_pass .'/js/custom.js', array('jquery-cdn'), false, true );
-        wp_enqueue_script( 'custom', $thema_pass.'/js/custom.js?'.filemtime( get_stylesheet_directory().'/js/custom.js'), array('jquery-cdn'));
+        wp_register_script( 'custom', $thema_pass .'/js/custom.js', array('jquery-cdn'), false, true );
+        // wp_enqueue_script( 'custom', $thema_pass.'/js/custom.js?'.filemtime( get_stylesheet_directory().'/js/custom.js'), array('jquery-cdn'));
     }
     function add_script() {
         register_script();
         wp_enqueue_script( 'jquery-cdn' );
         wp_enqueue_script( 'lazysizes' );
         wp_enqueue_script( 'lazysizes-unveilhooks' );
-        wp_enqueue_script( 'slick' );
-        wp_enqueue_script( 'iscroll' );
-        wp_enqueue_script( 'drawer' );
         wp_enqueue_script( 'uikit' );
         wp_enqueue_script( 'uikit-icons' );
         wp_enqueue_script( 'custom' );
@@ -59,12 +53,9 @@ if( !is_admin() ) {
     function add_style() {
         $thema_pass = get_stylesheet_directory_uri();
         wp_enqueue_style('normalize', $thema_pass. '/css/normalize.css', array(), false, 'all' );
-        wp_enqueue_style('drawer', $thema_pass.'/css/drawer.min.css', array(), false, 'all');
-        wp_enqueue_style('slick', $thema_pass.'/css/slick.css', array(), false, 'all');
         wp_enqueue_style('uikit', $thema_pass.'/css/uikit.min.css', array(), false, 'all');
-        // wp_enqueue_style('ionicons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), false, 'all');
-        // wp_enqueue_style('style', $thema_pass.'/style.css', array(), false, 'all');
-        wp_enqueue_style('style', $thema_pass.'/style.css', array(), filemtime( get_stylesheet_directory().'/style.css' ), 'all');
+        wp_enqueue_style('style', $thema_pass.'/style.css', array(), false, 'all');
+        // wp_enqueue_style('style', $thema_pass.'/style.css', array(), filemtime( get_stylesheet_directory().'/style.css' ), 'all');
         // echo '<link rel="shortcut icon" type="image/x-icon" href="'.$thema_pass.'/images/favicon.ico" />'; //ファビコン
         // echo '<link rel="apple-touch-icon" sizes="192x192" href="'.$thema_pass.'/images/touchicon.png" />'; //タッチアイコン
     }
