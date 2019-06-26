@@ -1,7 +1,10 @@
 <?php get_header(); ?>
 
-<div class="content">
-<main>
+<div class="inner">
+
+<?php echo get_breadcrumb(); ?>
+<div class="content" uk-grid>
+<main class="uk-width-2-3@l">
     <article>
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <div id="post-<?php the_ID(); ?>" class="post">
@@ -16,9 +19,10 @@
                 </a>
             </div>
             <div class="post-body uk-padding-small">
-                <div class="post-header">
-                    <span class="post-date uk-text-meta" itemprop="datePublished" datetime="<?php echo esc_attr( get_the_date( DATE_ISO8601 ) ); ?>"><?php the_time('Y/m/d'); ?></span>
+                <div class="post-header uk-margin-bottom">
                     <h1 class="post-title"><?php the_title(); ?></h1>
+                    <span class="post-date uk-text-meta uk-margin-small-right" itemprop="datePublished" datetime="<?php echo esc_attr( get_the_date( DATE_ISO8601 ) ); ?>"><?php the_time('Y/m/d'); ?></span>
+                    <div class="post-categories uk-text-meta uk-margin-small-bottom"><?php echo get_post_category(); ?></div>
                 </div>
                 <div class="post-content">
                     <?php  the_content(); //Content ?>
@@ -50,6 +54,11 @@
         <h2 class="sub-title">新着記事</h2>
     </div>
 </main>
+<aside class="uk-width-1-3@l">
+    <?php get_sidebar(); ?>
+</aside>
 </div><?php //.content ?>
+
+</div><?php //.inner ?>
 
 <?php get_footer(); ?>

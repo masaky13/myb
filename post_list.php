@@ -24,7 +24,8 @@
                     <?php echo text_ellipsis( get_the_title(), 32 ); ?>
                 <?php endif; ?>
             </a></h3>
-            <span class="post-date uk-text-meta" itemprop="datePublished" datetime="<?php the_time('Y/m'); ?>"><?php the_time('Y/m'); ?></span>
+            <span class="post-date uk-text-meta uk-margin-small-right" itemprop="datePublished" datetime="<?php the_time('Y/m'); ?>"><?php the_time('Y/m'); ?></span>
+            <span class="post-categories uk-text-meta"><?php echo get_post_category(); ?></span>
         </div>
     </div>
 <?php endwhile;

@@ -107,7 +107,7 @@ function get_toggle_navi() {
     if ( has_nav_menu( 'primary-menu' ) ) {
         $ht .= '<a href="#offcanvas-slide" class="uk-button uk-button-small" uk-icon="menu" uk-toggle></a>';
         $ht .= '<div id="offcanvas-slide" uk-offcanvas="overlay: true">';
-        $ht .= '<div class="uk-offcanvas-bar">';
+        $ht .= '<div class="uk-offcanvas-bar"><button class="uk-offcanvas-close" type="button" uk-close>';
         $ht .= wp_nav_menu( array(
                 'theme_location' => 'primary-menu',
                 'container' => false,
@@ -138,7 +138,7 @@ function get_breadcrumb() {
     // ポストタイプを取得
     $post_type = get_post_type( $post );
 
-    $bc  = '<ol class="breadcrumb clearfix">';
+    $bc  = '<ol class="breadcrumb uk-padding-small clearfix">';
     $bc .= '<li itemscope="itemscope" itemtype="'.$itemtype.'"><a href="'.home_url().'" itemprop="url"><span itemprop="title">'.get_bloginfo('name').'</span></a></li>';
 
     if( is_home() ){
@@ -198,7 +198,7 @@ function get_breadcrumb() {
                 $cat = $ct;
             }
         }
-        if( $cat ) {
+        if( !empty($cat) ) {
             if( $cat->parent != 0 ){
                 $ancs = array_reverse(get_ancestors( $cat->cat_ID, 'category' ));
                 foreach( $ancs as $anc ){
@@ -371,22 +371,18 @@ function term_child_directly( $taxonomy ) {
 }
 
 // categoryの取得
-function or_get_category( $getparent = true ) {
+function get_post_category() {
     global $excludes;
+    $ht = '';
     $categories = get_the_category();
     if( !empty( $categories ) ) {
-        $ht = '';
-        $childclass = '';
         foreach( $categories as $category ) {
             if( !in_array( $category->cat_ID, $excludes ) ) {
                 if( $category->parent != 0 ) {
                     $parent = get_term( $category->parent );
-                    if( $getparent === true ) {
-                        $ht .= '<p class="post-category link-style-border '. $parent->slug .'"><a href="'. get_category_link( $category->parent ) .'">'.  $parent->name .'</a></p>';
-                    }
-                    $childclass = $parent->slug .'-child';
+                    $ht .= '<span class="post-category '. $parent->name .' uk-label uk-margin-small-right"><a href="'. get_category_link( $category->parent ) .'">'.  $parent->name .'</a></span>';
                 }
-                $ht .= '<p class="post-category link-style-border '. $childclass .'"><a href="'. get_category_link( $category->cat_ID ) .'">'. $category->cat_name . '</a></p>';
+                $ht .= '<span class="post-category '. $category->cat_name .' uk-label uk-margin-small-right"><a href="'. get_category_link( $category->cat_ID ) .'">'. $category->cat_name . '</a></span>';
             }
         }
     }

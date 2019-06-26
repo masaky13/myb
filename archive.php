@@ -1,17 +1,22 @@
 <?php get_header(); ?>
 
-<div class="content">
-<main>
+<div class="inner">
+
+<?php echo get_breadcrumb(); ?>
+<div class="content" uk-grid>
+<main class="uk-width-2-3@l">
     <article>
-        <section class="topview c-cover">
-            <div class="inner">
-                <h1 class="title"><?php echo get_archve_title(); ?></h1>
-                <span> (<?php echo $wp_query->found_posts; ?>)</span>
-            </div><?php //.inner ?>
+        <section class="article uk-padding-small">
+            <h1><?php echo get_archve_title(); ?></h1>
+            <!-- <span> (<?php echo $wp_query->found_posts; ?>)</span> -->
         </section>
         <?php get_template_part( 'post_list' ); ?>
-    </article><?php //.inner ?>
+    </article>
 </main>
+<aside class="uk-width-1-3@l">
+    <?php get_sidebar(); ?>
+</aside>
 </div><?php //.content ?>
 
+</div><?php //.inner ?>
 <?php get_footer(); ?>
