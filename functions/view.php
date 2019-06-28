@@ -54,8 +54,8 @@ if( !is_admin() ) {
         $thema_pass = get_stylesheet_directory_uri();
         wp_enqueue_style('normalize', $thema_pass. '/css/normalize.css', array(), false, 'all' );
         wp_enqueue_style('uikit', $thema_pass.'/css/uikit.min.css', array(), false, 'all');
-        wp_enqueue_style('style', $thema_pass.'/style.css', array(), false, 'all');
-        // wp_enqueue_style('style', $thema_pass.'/style.css', array(), filemtime( get_stylesheet_directory().'/style.css' ), 'all');
+//         wp_enqueue_style('style', $thema_pass.'/style.css', array(), false, 'all');
+        wp_enqueue_style('style', $thema_pass.'/style.css', array(), filemtime( get_stylesheet_directory().'/style.css' ), 'all');
         // echo '<link rel="shortcut icon" type="image/x-icon" href="'.$thema_pass.'/images/favicon.ico" />'; //ファビコン
         // echo '<link rel="apple-touch-icon" sizes="192x192" href="'.$thema_pass.'/images/touchicon.png" />'; //タッチアイコン
     }
@@ -371,13 +371,46 @@ function get_post_category() {
             if( !in_array( $category->cat_ID, $excludes ) ) {
                 if( $category->parent != 0 ) {
                     $parent = get_term( $category->parent );
-                    $ht .= '<span class="post-category '. $parent->name .' uk-label uk-margin-small-right"><a href="'. get_category_link( $category->parent ) .'">'.  $parent->name .'</a></span>';
+                    $ht .= '<span class="post-category '. $parent->slug .' uk-margin-small-right"><a href="'. get_category_link( $category->parent ) .'">'.  $parent->name .'</a></span>';
                 }
-                $ht .= '<span class="post-category '. $category->cat_name .' uk-label uk-margin-small-right"><a href="'. get_category_link( $category->cat_ID ) .'">'. $category->cat_name . '</a></span>';
+                $ht .= '<span class="post-category '. $category->slug .' uk-margin-small-right"><a href="'. get_category_link( $category->cat_ID ) .'">'. $category->cat_name . '</a></span>';
             }
         }
     }
     return $ht;
+}
+// authorの取得
+function get_post_author() {
+    $author_id = get_the_author_meta( 'ID' );
+    $html = '';
+    $html .= '<div class="post-author uk-card uk-card-default">';
+    $html .= '<div class="uk-card-header uk-padding-small"><div class="uk-grid-small" uk-grid>';
+    $html .= '<div class="uk-width-auto"><img class="uk-border-circle" width="50" height="50" src="'. get_user_avatar_img( $author_id ) .'"></div>';
+    $html .= '<div class="uk-width-expand">';
+    $html .= '<h2 class="uk-card-title"><a href="'. get_the_author_meta( 'user_url' ) .'">'. get_the_author_meta( 'nickname' ) .'</a></h2>';
+    $html .= '<span class="uk-text-meta uk-margin-small-right">記事数：'. get_the_author_posts() .'</span>';
+    $html .= '</div>';
+    $html .= '</div></div>';
+    $author_descr = get_the_author_meta( 'description' );
+    if( !empty( $author_descr ) ) {
+        $html .= '<div class="uk-card-body uk-padding-small"><p class="profile uk-text-meta">'. $author_descr .'</p></div>';
+    }
+    $html .= '</div>';
+    $html .= '';
+    return $html;
+}
+//ユーザーアバター取得
+function get_user_avatar_img($userid){
+	$tmp_img = get_avatar($userid);
+	$search = '/<img.*?src=(["\'])(.+?)\1.*?>/i';
+	if(preg_match($search, $tmp_img, $url)){
+		$author_img = $url[2];
+		$author_img = str_replace('-96x96.png', '.png', $author_img);
+		// $author_img = '<img src="'.$author_img.'">';
+	}else{
+		$author_img = get_avatar($userid);
+	}
+	return $author_img;
 }
 
 // tag・taxonomyの表示

@@ -25,29 +25,32 @@ Version: 2019-05-31
 body {
     background-color: rgba(219, 228, 232, 0);
     font-family: "Century Gothic", "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
-    color: #555;
+    color: #353235;
+    background: #f4f1ed;
 }
 h1 {
     margin: 0;
 }
 h2 {
-    margin: 0 0 .4em;
+    margin: 0 0 .5rem;
     padding: 0;
-    color: #555;
+    color: #4f4c52;
+    font-size: 1.3rem;
+    line-height: 1.5;
 }
 h3 {
-    margin: 0 0 .4em;
+    margin: 0 0 .4rem;
     padding: 0;
     font-size: 1.2rem;
-    line-height: 1.5em;
+    line-height: 1.5;
 }
 p {
-    margin: 0 0 .4em;
+    margin: 0 0 1rem;
     padding: 0;
-    font-size: 1.1rem;
-    line-height: 1.4em;
+    font-size: 1rem;
+    line-height: 1.5;
 }
-ol, ul,li {
+ol, ul, li {
     margin: 0;
     padding: 0;
 }
@@ -114,8 +117,8 @@ main {
 section {
     margin: 0;
 }
-section h2 {
-    text-shadow: 2px 2px 6px rgba(40, 40, 40, .5);
+.site-heading {
+    text-shadow: 2px 2px 2px rgba(100, 100, 100, .3);
 }
 /*-- header
 ------------------------------ */
@@ -125,10 +128,10 @@ section h2 {
     width: 100%;
     top: 0;
     z-index: 1000;
-    background: #c3c3c3;
+    background: #c6bebe;
 }
 #header a {
-    color: #333;
+    color: #353235;
 }
 @media only screen and (max-width: 960px) {
     #header {
@@ -213,12 +216,12 @@ footer {
 .post-title {
     margin: 0 0 5px;
     color: #333;
-    font-size: 1.4rem;
-    line-height: 1.3;
+    font-size: 1.1rem;
+    line-height: 1.2;
     font-weight: bold;
 }
 .post-title a {
-    color: #333;
+    color: #362931;
 }
 .sub-title {
     margin: 0 0 10px;
@@ -226,17 +229,33 @@ footer {
     line-height: 1;
 }
 .post-list .post-title {
-    height: 60px;
+    height: 50px;
     overflow: hidden;
 }
-
+.post-category {
+    color: #c9b9a1;
+}
 /*-- post
 ------------------------------ */
+.post {
+    background: #fff;
+}
+.post .post-title {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
 .post .post-image {
     margin: 0 0 10px;
 }
 .post .post-header {
     margin: 0 0 10px;
+}
+.post .post-content h2 {
+	margin: 15px 0;
+    padding: 0 0 5px;
+    font-weight: bold;
+    border-bottom: 1px solid #4e3c33;
 }
 .post-nav {
     margin: 15px 0;
@@ -409,42 +428,6 @@ footer {
 }
 .hover-zoom:hover img {
     transform: scale(1.2);
-}
-.graphic a {
-    color: #cc3333;
-}
-.graphic a:hover {
-    background: #cc3333;
-}
-.graphic-child a {
-    color: #ee5555;
-}
-.graphic-child a:hover {
-    background: #ee5555;
-}
-.web a {
-    color: #3333cc;
-}
-.web a:hover {
-    background: #3333cc;
-}
-.web-child a {
-    color: #5555e9;
-}
-.web-child a:hover {
-    background: #5555e9;
-}
-.video a {
-    color: #33cc33;
-}
-.video a:hover {
-    background: #33cc33;
-}
-.video-child a {
-    color: #55ee55;
-}
-.video-child a:hover {
-    background: #55ee55;
 }
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
     background: #33ccaa;

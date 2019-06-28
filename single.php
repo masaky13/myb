@@ -21,8 +21,12 @@
             <div class="post-body uk-padding-small">
                 <div class="post-header uk-margin-bottom">
                     <h1 class="post-title"><?php the_title(); ?></h1>
-                    <span class="post-date uk-text-meta uk-margin-small-right" itemprop="datePublished" datetime="<?php echo esc_attr( get_the_date( DATE_ISO8601 ) ); ?>"><?php the_time('Y/m/d'); ?></span>
-                    <div class="post-categories uk-text-meta uk-margin-small-bottom"><?php echo get_post_category(); ?></div>
+                    
+                    <div class="post-meta uk-text-meta uk-margin-small-bottom">
+						<span class="post-date uk-margin-small-right" itemprop="datePublished" datetime="<?php echo esc_attr( get_the_date( DATE_ISO8601 ) ); ?>"><?php the_time('Y/m/d'); ?></span>
+						<?php echo get_post_category(); ?>
+					</div>
+                    <?php echo get_post_author(); ?>
                 </div>
                 <div class="post-content">
                     <?php  the_content(); //Content ?>

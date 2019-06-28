@@ -5,8 +5,8 @@
 ?>
 <div class="post-list">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <div class="uk-flex uk-card uk-card-default uk-margin-small">
-        <div class="post-image uk-width-1-4 uk-cover-container uk-margin-small uk-margin-small-top uk-margin-small-left"><?php //.post-image ?>
+    <div class="uk-flex uk-card uk-card-default uk-margin-small uk-padding-small">
+        <div class="post-image uk-width-1-4 uk-margin-small-right uk-cover-container"><?php //.post-image ?>
             <a href="<?php the_permalink(); ?>">
                 <?php if ( has_post_thumbnail() ): // サムネイルを持っているときの処理 ?>
                     <?php $icatch = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'); ?>
@@ -16,10 +16,10 @@
                 <?php endif; ?>
             </a>
         </div>
-        <div class="post-info uk-width-expand uk-margin-small uk-margin-small-left uk-margin-small-right"><?php //.post-info ?>
+        <div class="post-info uk-width-expand"><?php //.post-info ?>
             <h3 class="post-title"><a href="<?php the_permalink(); ?>">
                 <?php if( wp_is_mobile() ) : ?>
-                    <?php echo text_ellipsis( get_the_title(), 21 ); ?>
+                    <?php echo text_ellipsis( get_the_title(), 26 ); ?>
                 <?php else: ?>
                     <?php echo text_ellipsis( get_the_title(), 32 ); ?>
                 <?php endif; ?>

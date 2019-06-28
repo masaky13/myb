@@ -8,8 +8,8 @@
 
 <div class="content" uk-grid>
 <main class="uk-width-2-3@l">
-    <section class="top-posts uk-padding-small">
-        <h2>新着記事</h2>
+	<section class="top-posts uk-margin-small-left uk-margin-small-right">
+		<h2>新着一覧</h2>
     </section>
     <?php get_template_part( 'post_list' ); ?>
 </main>
