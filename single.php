@@ -9,19 +9,17 @@
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <div id="post-<?php the_ID(); ?>" class="post">
             <div class="post-image"><?php //.post-image ?>
-                <a href="<?php the_permalink(); ?>">
-                    <?php if ( has_post_thumbnail() ): // サムネイルを持っているときの処理 ?>
-                        <?php $icatch = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'); ?>
-                        <img data-src="<?php echo $icatch[0]; ?>" class="lazyload" />
-                    <?php else: // サムネイルを持っていないときの処理 ?>
-                        <img data-src="<?php echo get_template_directory_uri(); ?>/images/no-image.jpg" alt="no image" title="no image" class="lazyload">
-                    <?php endif; ?>
-                </a>
+                <?php if ( has_post_thumbnail() ): // サムネイルを持っているときの処理 ?>
+                    <?php $icatch = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'); ?>
+                    <img data-src="<?php echo $icatch[0]; ?>" class="lazyload" />
+                <?php else: // サムネイルを持っていないときの処理 ?>
+                    <img data-src="<?php echo get_template_directory_uri(); ?>/images/no-image.jpg" alt="no image" title="no image" class="lazyload">
+                <?php endif; ?>
             </div>
             <div class="post-body uk-padding-small">
                 <div class="post-header uk-margin-bottom">
                     <h1 class="post-title"><?php the_title(); ?></h1>
-                    
+
                     <div class="post-meta uk-text-meta uk-margin-small-bottom">
 						<span class="post-date uk-margin-small-right" itemprop="datePublished" datetime="<?php echo esc_attr( get_the_date( DATE_ISO8601 ) ); ?>"><?php the_time('Y/m/d'); ?></span>
 						<?php echo get_post_category(); ?>
