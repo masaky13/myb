@@ -24,8 +24,8 @@
 <div class="body-wrap">
 <header id="header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader" uk-sticky="show-on-up: true">
 <div class="inner">
-    <div class="uk-grid-medium" uk-grid>
-      <h1 class="uk-width-1-4@m"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+    <div class="uk-grid-medium" uk-grid uk-height-match="target: > *">
+      <h1 class="uk-width-1-4@m uk-flex uk-flex-middle uk-flex-center"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
       <div class="uk-width-expand@m"><?php echo get_global_navi(); ?></div>
     </div>
     <div class="none-pc sp-nav"><?php echo get_toggle_navi(); ?></div>
