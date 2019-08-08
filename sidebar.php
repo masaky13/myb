@@ -8,7 +8,9 @@
     ?>
 </div>
 <div class="side-section">
-    <h4 class="side-title">新着記事</h4>
+    <div class="top-posts uk-margin-small-left uk-margin-small-right">
+        <h4 class="side-title">新着記事</h4>
+    </div>
     <div class="post-list">
         <?php get_template_part( 'post_list_common' ); ?>
     </div>

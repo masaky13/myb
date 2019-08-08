@@ -53,7 +53,12 @@
         </div>
     </article>
     <div class="post-side uk-padding-small">
-        <h2 class="sub-title">新着記事</h2>
+        <div class="top-posts uk-margin-small-left uk-margin-small-right">
+            <h2 class="sub-title">関連記事</h2>
+        </div>
+        <div class="post-list">
+            <?php get_template_part( 'post_list_common' ); ?>
+        </div>
     </div>
 </main>
 <aside class="uk-width-1-3@l">

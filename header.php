@@ -16,7 +16,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   <?php wp_head(); ?>
-  <?php //echo get_option('analytics_tracking_code');?>
+  <?php echo get_option('ga_tracking_code');?>
   <?php //echo get_option('webmaster_tool');?>
 </head>
 
