@@ -16,9 +16,7 @@
         <small class="copy">Copyright&copy;<?php bloginfo( 'name' ); ?>,<?php echo date( 'Y' ); ?>All Rights Reserved.</small>
     </div>
 </footer>
-<!-- ページトップへ戻る -->
-<div id="page-top"><a href="#wrapper"></a></div>
-<!-- ページトップへ戻る　終わり -->
+<a href="#" uk-totop uk-scroll></a>
 <?php wp_footer(); ?>
 </div>
 </body>

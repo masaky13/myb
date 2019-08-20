@@ -24,31 +24,31 @@ Version: 2019-05-31
 }
 body {
     background-color: rgba(219, 228, 232, 0);
-    font-family: "Century Gothic", "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", Hiragino Kaku Gothic Pro, "ＭＳ Ｐゴシック", sans-serif;
+    font-family: "游明朝","Yu Mincho","Century Gothic", "ヒラギノ明朝 Pro W3 Pro W3", Hiragino Mincho Pro, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
     color: #353235;
     background: #f4f1ed;
 }
-h1 {
-    margin: 0;
-}
-h2 {
+h1, h2, h3, h4 {
+    font-family: "游明朝","Yu Mincho","Century Gothic", "ヒラギノ明朝 Pro W3 Pro W3", Hiragino Mincho Pro, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
     margin: 0 0 .5rem;
     padding: 0;
-    color: #4f4c52;
-    font-size: 1.3rem;
     line-height: 1.5;
 }
+h2 {
+    color: #353235;
+    font-size: 1.1rem;
+}
 h3 {
-    margin: 0 0 .4rem;
-    padding: 0;
-    font-size: 1.2rem;
-    line-height: 1.5;
+    font-size: 1rem;
+}
+h4 {
+    font-size: 1rem;
 }
 p {
     margin: 0 0 1rem;
     padding: 0;
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.8;
 }
 ol, ul, li {
     margin: 0;
@@ -83,7 +83,7 @@ img {
 .none-pc {
     display: none;
 }
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1020px) {
     .none-sp {
         display: none;
     }
@@ -101,9 +101,9 @@ img {
     margin: 0 auto;
     width: 100%;
 }
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 1020px) {
     .inner {
-        max-width: 960px;
+        max-width: 1020px;
     }
 }
 /*-- main
@@ -123,7 +123,7 @@ section {
 /*-- header
 ------------------------------ */
 #header {
-    padding: 10px 0;
+    padding: 5px 0;
     position: relative;
     width: 100%;
     top: 0;
@@ -131,9 +131,9 @@ section {
     background: #c6bebe;
 }
 #header a {
-    color: #353235;
+    color: #575159;
 }
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1020px) {
     #header {
             text-align: center;
         }
@@ -159,12 +159,12 @@ footer {
 }
 .sp-nav {
     position: absolute;
-    top: 20px;
+    top: 12px;
     left: 0;
 }
 .sp-nav-search {
     position: absolute;
-    top: 20px;
+    top: 12px;
     right: 0;
 }
 /*-- breadcrumb
@@ -210,6 +210,12 @@ footer {
 
 /*-- top archive
 ------------------------------ */
+.post-list-top .post-image img {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    object-fit: cover;    
+}
 
 /*-- archive
 ------------------------------ */
@@ -218,7 +224,6 @@ footer {
     color: #333;
     font-size: 1.1rem;
     line-height: 1.2;
-    font-weight: bold;
 }
 .post-title a {
     color: #362931;
@@ -229,12 +234,31 @@ footer {
     line-height: 1;
 }
 .post-list .post-title {
-    height: 50px;
+    height: 44px;
     overflow: hidden;
+}
+.post-list .post-image img {
+    width: 100%;
+    height: 65px;
+    object-fit: cover;    
 }
 .post-category {
     color: #c9b9a1;
 }
+@media only screen and (min-width: 768px) {
+    .post-list .post-image img {
+        height: 100px;
+    }
+}
+
+/*-- archive
+------------------------------ */
+@media only screen and (min-width: 980px) {
+    .side-section .post-list .post-image img {
+        height: 60px;
+    }
+}
+
 /*-- post
 ------------------------------ */
 .post {

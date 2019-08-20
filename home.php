@@ -2,14 +2,14 @@
 
 <div class="inner">
 
-<section class="top-view uk-margin-bottom uk-padding-small">
+<section class="top-view uk-margin-bottom">
     <?php get_template_part( 'post_list_top' ); ?>
 </section><?php //.top-view ?>
 
 <div class="content" uk-grid>
 <main class="uk-width-2-3@l">
-	<section class="top-posts uk-margin-small-left uk-margin-small-right">
-		<h2>新着一覧</h2>
+	<section class="top-posts uk-padding-small uk-text-center">
+		<h2>新着</h2>
     </section>
     <?php get_template_part( 'post_list' ); ?>
 </main>

@@ -5,10 +5,10 @@
 ?>
 <div class="post-list-top">
 <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
-<div class="uk-slider-items uk-child-width-1-2@s uk-grid">
+<div class="uk-slider-items uk-child-width-1-2@s uk-grid" uk-grid uk-height-match="target: > div > .uk-card">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
     <div>
-    <div class="uk-card uk-card-default">
+    <div class="uk-panel">
         <a href="<?php the_permalink(); ?>">
         <div class="post-image uk-card-media-top"><?php //.post-image ?>
             <?php if ( has_post_thumbnail() ): // サムネイルを持っているときの処理 ?>
@@ -18,8 +18,8 @@
                 <img data-src="<?php echo get_template_directory_uri(); ?>/images/no-image.jpg" alt="no image" title="no image" class="lazyload">
             <?php endif; ?>
         </div>
-        <div class="post-info uk-card-body uk-padding-small"><?php //.post-info ?>
-            <h3 class="post-title uk-card-title">
+        <div class="post-info uk-position-center uk-text-center"><?php //.post-info ?>
+            <h3 class="post-title uk-card-title uk-padding" uk-slider-parallax="x: 200,-200">
                 <?php if( wp_is_mobile() ) : ?>
                     <?php echo text_ellipsis( get_the_title(), 27 ); ?>
                 <?php else: ?>
