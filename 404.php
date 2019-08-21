@@ -1,20 +1,25 @@
 <?php get_header(); ?>
+<div class="inner">
 
-<div class="content"><!-- content -->
-<article>
-    <section class="topview c-cover"><!-- topview -->
-        <div class="inner">
-            <div class="title">
-                <h1>404ページ</h1>
+<?php echo get_breadcrumb(); ?>
+<div class="content">
+<main>
+    <article>
+        <div id="post-404" class="post">
+            <div class="post-body uk-padding-small">
+                <div class="post-header uk-margin-bottom">
+                    <h1 class="post-title uk-text-center">404ページ</h1>
+                </div>
+                <div class="post-content">
+                    お探しのページは見つかりませんでした。
+                </div>
+                <div class="post-footer">
+                </div>
             </div>
         </div>
-    </section><!-- /topview -->
+    </article>
+</main>
+</div><?php //.content ?>
 
-    <main>
-        <div class="container">
-            お探しのページは見つかりませんでした。
-        </div>
-    </main>
-</article>
-</div><!-- /#content -->
+</div><?php //.inner ?>
 <?php get_footer(); ?>

@@ -1,22 +1,13 @@
-<footer>
+<footer class="uk-padding">
     <div class="inner">
-        <?php //フッターメニュー
-        $defaults = array(
-            'theme_location'  => 'secondary-menu',
-            'container'       => 'div',
-            'container_class' => 'footermenubox clearfix ',
-            'menu_class'      => 'footermenust',
-            'depth'           => 1,
-        );
-        wp_nav_menu( $defaults );
-        ?>
+        <a href="#" uk-totop uk-scroll></a>
+        <div class="footer-menu uk-margin uk-text-meta"><?php echo get_footer_navi(); ?></div>
         <div class="footer-info">
-            <p><?php bloginfo('name'); ?></p>
+            <p class="uk-text-center"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/meyabi-logo.png" alt="<?php bloginfo('name'); ?>" width=150 /></a></p>
         </div>
         <small class="copy">Copyright&copy;<?php bloginfo( 'name' ); ?>,<?php echo date( 'Y' ); ?>All Rights Reserved.</small>
     </div>
 </footer>
-<a href="#" uk-totop uk-scroll></a>
 <?php wp_footer(); ?>
 </div>
 </body>

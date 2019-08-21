@@ -30,9 +30,9 @@ function is_mobile(){
 add_filter( 'nav_menu_css_class', 'nav_menu_add_class', 10, 2 );
 function nav_menu_add_class( $classes, $item ) {
     $classes = array();
-    $classes[] = 'column';
+    $classes[] = '';
     if( $item->current == true ) {
-        $classes[] = 'current';
+        $classes[] = 'current uk-active';
     }
     return $classes;
 }

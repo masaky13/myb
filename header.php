@@ -22,11 +22,11 @@
 
 <body <?php body_class();?> itemschope="itemscope" itemtype="http://schema.org/WebPage">
 <div class="body-wrap">
-<header id="header" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader" uk-sticky="show-on-up: true">
+<header id="header" class="uk-margin-bottom@l" role="banner" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
 <div class="inner">
-    <div class="uk-grid-medium" uk-grid uk-height-match="target: > *">
-      <h1 class="uk-width-1-4@m uk-flex uk-flex-middle uk-flex-center"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
-      <div class="uk-width-expand@m"><?php echo get_global_navi(); ?></div>
+    <div>
+      <h1 class="uk-text-center"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/meyabi-logo.png" alt="<?php bloginfo('name'); ?>" width=150 /></a></h1>
+      <div class="gb-nav uk-text-center"><?php echo get_global_navi(); ?></div>
     </div>
     <div class="none-pc sp-nav"><?php echo get_toggle_navi(); ?></div>
     <div class="none-pc sp-nav-search"><?php echo get_toggle_navisearch(); ?></div>

@@ -8,8 +8,8 @@
     $the_query = new WP_Query( $args );
 ?>
 <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-    <div class="uk-flex uk-card uk-card-default uk-margin-small uk-padding-small">
-        <div class="post-image uk-width-1-4 uk-margin-small-right uk-cover-container"><?php //.post-image ?>
+    <div class="uk-card uk-card-default uk-margin uk-padding-small">
+        <div class="post-image uk-margin-small-bottom"><?php //.post-image ?>
             <a href="<?php the_permalink(); ?>">
                 <?php if ( has_post_thumbnail() ): // サムネイルを持っているときの処理 ?>
                     <?php $icatch = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'); ?>
@@ -19,7 +19,7 @@
                 <?php endif; ?>
             </a>
         </div>
-        <div class="post-info uk-width-expand"><?php //.post-info ?>
+        <div class="post-info"><?php //.post-info ?>
             <h3 class="post-title"><a href="<?php the_permalink(); ?>">
                 <?php if( wp_is_mobile() ) : ?>
                     <?php echo text_ellipsis( get_the_title(), 26 ); ?>

@@ -28,8 +28,8 @@ body {
     color: #353235;
     background: #f4f1ed;
 }
-h1, h2, h3, h4 {
-    font-family: "游明朝","Yu Mincho","Century Gothic", "ヒラギノ明朝 Pro W3 Pro W3", Hiragino Mincho Pro, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+h1, h2, h3, h4, a {
+    font-family: "游明朝","Yu Mincho","Century Gothic", "ヒラギノ明朝 Pro W3 Pro W3", Hiragino Mincho Pro, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif !important;
     margin: 0 0 .5rem;
     padding: 0;
     line-height: 1.5;
@@ -130,19 +130,21 @@ section {
     z-index: 1000;
     background: #c6bebe;
 }
+#header h1 {
+    margin: 0;
+}
 #header a {
     color: #575159;
 }
 @media only screen and (max-width: 1020px) {
     #header {
-            text-align: center;
-        }
+        text-align: center;
+    }
 }
 
 /*-- footer
 ------------------------------ */
 footer {
-    padding: 10px;
     position: relative;
     background: #c3c3c3;
     z-index: 5;
@@ -212,9 +214,13 @@ footer {
 ------------------------------ */
 .post-list-top .post-image img {
     width: 100%;
-    height: 280px;
-    overflow: hidden;
+    height: 250px;
     object-fit: cover;    
+}
+@media only screen and (min-width: 768px) {
+    .post-list-top .post-image img {
+        height: 450px;
+    }
 }
 
 /*-- archive
@@ -233,31 +239,12 @@ footer {
     font-size: 1.1rem;
     line-height: 1;
 }
-.post-list .post-title {
-    height: 44px;
-    overflow: hidden;
-}
-.post-list .post-image img {
-    width: 100%;
-    height: 65px;
-    object-fit: cover;    
-}
 .post-category {
     color: #c9b9a1;
-}
-@media only screen and (min-width: 768px) {
-    .post-list .post-image img {
-        height: 100px;
-    }
 }
 
 /*-- archive
 ------------------------------ */
-@media only screen and (min-width: 980px) {
-    .side-section .post-list .post-image img {
-        height: 60px;
-    }
-}
 
 /*-- post
 ------------------------------ */

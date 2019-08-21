@@ -8,10 +8,10 @@
 
 <div class="content" uk-grid>
 <main class="uk-width-2-3@l">
-	<section class="top-posts uk-padding-small uk-text-center">
-		<h2>新着</h2>
+	<section class="top-posts">
+		<h2 class="uk-padding-small uk-text-center">新着</h2>
+        <?php get_template_part( 'post_list' ); ?>
     </section>
-    <?php get_template_part( 'post_list' ); ?>
 </main>
 <aside class="uk-width-1-3@l">
     <?php get_sidebar(); ?>
