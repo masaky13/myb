@@ -151,6 +151,30 @@ function banner_options_page() {
 <?php
 }
 
+// 記事　カスタムフィールド登録
+add_action('admin_menu', 'add_post_fields');
+function add_post_fields() {
+    //add_meta_box(表示される入力ボックスのHTMLのID, ラベル, 表示する内容を作成する関数名, 投稿タイプ, 表示方法)
+    add_meta_box( 'pickup_posts', 'Pickup', 'insert_pickup_posts_fields', 'post', 'normal');
+}
+// カスタムフィールドの入力エリア
+function insert_pickup_posts_fields() {
+    global $post;
+    $pickup_posts = get_post_meta($post->ID, 'pickup_posts', true);
+    $check = ( $pickup_posts === 'on' ) ? 'checked' : '';
+    echo '<input type="hidden" name="pickup_posts" value="off" />';
+    echo '<input id="pickup_post" type="checkbox" name="pickup_posts" value="on" '. $check .' />';
+    echo '<span class="title"><label for="pickup_post">トップへ表示させる</label></span>';
+}
+add_action('save_post', 'save_post_fields');
+function save_post_fields( $post_id ) {
+    if( $_POST['pickup_posts'] === 'on' ) {
+        update_post_meta( $post_id, 'pickup_posts', $_POST['pickup_posts'] );
+    } else {
+        delete_post_meta( $post_id, 'pickup_posts' );
+    }
+}
+
 /**
  * 初期画面設定でデフォルト値を設定する
  *

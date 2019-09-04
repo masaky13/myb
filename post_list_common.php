@@ -4,7 +4,14 @@
 */
 ?>
 <?php
-    $args = array( 'post_type' => 'post', 'post_count' => 10 );
+    // $args = array( 'post_type' => 'post', 'post_count' => 10 );
+    $args = array(
+        'post_type'     => 'post',  //投稿タイプ
+        'numberposts'   => 5,       //表示数
+        'meta_key'      => 'pageviews',
+        'orderby'       => 'meta_value_num',
+        'order'         => 'DESC',
+    );
     $the_query = new WP_Query( $args );
 ?>
 <?php if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>

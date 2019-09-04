@@ -2,11 +2,17 @@
 /**
 * トップ
 */
+$args = array(
+    'post_type'     => 'post',  //投稿タイプ
+    'numberposts'   => 5,       //表示数
+    'meta_key'      => 'pickup_posts',
+);
+$top_query = new WP_Query( $args );
 ?>
 <div class="post-list-top">
 <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
 <div class="uk-slider-items uk-child-width-1@s">
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<?php if ( $top_query->have_posts() ) : while ( $top_query->have_posts() ) : $top_query->the_post(); ?>
     <div class="uk-panel">
         <a href="<?php the_permalink(); ?>">
             <div class="post-image"><?php //.post-image ?>
@@ -31,7 +37,8 @@
 <?php endwhile;
 else: ?>
     <p>記事がありません</p>
-<?php endif; ?>
+<?php endif;
+wp_reset_postdata(); ?>
 </div>
 <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
 <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>

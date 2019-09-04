@@ -61,6 +61,24 @@ if( !is_admin() ) {
     }
 }
 
+add_action( 'wp', 'set_post_pageviews' );
+function set_post_pageviews() {
+    if( is_single() ) {
+        $post_id = get_the_ID();
+        $count_key = 'pageviews';
+        $count = get_post_meta( $post_id, $count_key, true );
+        if ( $count === '' ) {
+            $count = 1;
+            delete_post_meta( $post_id, $count_key );
+            add_post_meta( $post_id, $count_key, $count );
+        } elseif( !is_user_logged_in() ) {
+            ++$count;
+            update_post_meta( $post_id, $count_key, $count );
+        }
+    }
+}
+
+
 function head_meta_index() {
     if( is_home() && !is_paged() ) {
         $content = 'index,follow';
