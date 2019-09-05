@@ -449,3 +449,10 @@ footer {
     border: #33ccaa;
     transition: all .2s linear;
 }
+
+a.linelink {
+    font-family: "メイリオ","ヒラギノゴシック", sans-serif!important;
+    font-size: .75rem;
+    color: #666;
+    font-weight: bold;
+}

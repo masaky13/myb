@@ -299,6 +299,34 @@ function text_ellipsis( $text, $count ) {
     }
     return $text;
 }
+// SNS TOPページ
+function share_site_sns() {
+    $ht = '';
+    $url = home_url();
+    $discript = rawurlencode( get_bloginfo( 'description' ) );
+    $ht .= '<ul class="share-sns uk-flex uk-flex-center uk-grid-small uk-margin uk-text-center">';
+    $ht .= '<li><a class="facebook" href="http://www.facebook.com/sharer.php?u='. $url .'&amp;t='. $discript .'" target="_blank" rel="nofollow" title="Facebookで共有" uk-icon="facebook"></a></li>';
+    $ht .= '<li><a class="twitter" href="https://twitter.com/share?url='. $url .'&amp;text='. $discript .'" target="_blank" rel="nofollow" title="Twitterで共有" uk-icon="twitter"></a></li>';
+    $ht .= '<li><a class="linelink" href="http://line.me/R/msg/text/?'. $discript .'%0D%0A'. $url .'" target="_blank" rel="nofollow">LINE</a></li>';
+    // $ht .= '<li><a href="http://b.hatena.ne.jp/entry/'. $url .'" data-hatena-bookmark-title="'. $discript .'" target="_blank" rel="nofollow" title="このエントリーをはてなブックマークに追加" uk-icon="twitter"><img src="'.get_stylesheet_directory_uri().'/images/sns/hatenablog40.png" width="40" height="40" alt="このエントリーをはてなブックマークに追加"></a></li>';
+    // $ht .= '<li><a href="http://line.me/R/msg/text/?'. $discript .'%0D%0A'. $url .'" target="_blank" rel="nofollow"><img src="'.get_stylesheet_directory_uri().'/images/sns/line80.png" width="40" height="40" alt="LINEで送る" uk-icon="twitter"></a></li>';
+    $ht .= '</ul>';
+    return $ht;
+}
+
+// SNS 記事ページ
+function share_post_sns() {
+    $ht = '';
+    $url =  get_permalink();
+    $discript = rawurlencode( get_the_title() );
+
+    $ht .= '<ul class="share-sns uk-flex uk-flex-right uk-grid-small uk-margin uk-text-center">';
+    $ht .= '<li><a class="facebook" href="http://www.facebook.com/sharer.php?u='. $url .'&amp;t='. $discript .'" target="_blank" rel="nofollow" title="Facebookで共有" uk-icon="facebook"></a></li>';
+    $ht .= '<li><a class="twitter" href="https://twitter.com/share?url='. $url .'&amp;text='. $discript .'" data-text='. $discript .' target="_blank" rel="nofollow" title="Twitterで共有" uk-icon="twitter"></a></li>';
+    $ht .= '<li><a class="linelink" href="http://line.me/R/msg/text/?'. $discript .'%0D%0A'. $url .'" target="_blank" rel="nofollow">LINE</a></li>';
+    $ht .= '</ul>';
+    return $ht;
+}
 
 // 記事一覧　works_introduce
 // 固定ページのタイトルに、categoryのslugを入力して入稿すると固定ページの内容を表示させる処理
