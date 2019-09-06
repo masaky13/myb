@@ -3,7 +3,7 @@
 <div class="inner">
 
 <?php echo get_breadcrumb(); ?>
-<div class="content" uk-grid>
+<div class="content uk-margin-bottom" uk-grid>
 <main class="uk-width-2-3@l">
     <article>
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

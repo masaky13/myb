@@ -3,7 +3,7 @@
 <div class="inner">
 
 <?php echo get_breadcrumb(); ?>
-<div class="content">
+<div class="content uk-margin-bottom">
 <main>
     <article>
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
@@ -12,7 +12,7 @@
                 <div class="post-header uk-margin-bottom">
                     <h1 class="post-title uk-text-center"><?php the_title(); ?></h1>
                     <div class="post-meta uk-text-meta uk-margin-small-bottom">
-					</div>
+                    </div>
                 </div>
                 <div class="post-content">
                     <?php  the_content(); //Content ?>
