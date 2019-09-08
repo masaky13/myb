@@ -280,12 +280,13 @@ footer {
     display: block;
     padding: 15px;
 }
-/*-- page
+/*-- photo page
 ------------------------------ */
-.page-template-page-work .topview {
-    background-image: url("./images/profile-top.jpg");
+.photo-list .post-title {
+	color: #FFF;
+	font-weight: bold;
+    font-size: 1rem;
 }
-
 /*-- contact
 ------------------------------ */
 .contact {
