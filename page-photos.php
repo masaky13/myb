@@ -10,14 +10,15 @@ Template Name: Photos
 <main>
     <article>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <div id="post-<?php the_ID(); ?>" class="post">
+        <div id="post-<?php the_ID(); ?>" class="post photo-page">
             <div class="post-body uk-padding-small">
                 <div class="post-header uk-margin-bottom">
                     <h1 class="post-title uk-text-center"><?php the_title(); ?></h1>
                     <div class="post-meta uk-text-meta uk-margin-small-bottom">
+                        <?php echo share_post_sns(); ?>
                     </div>
                 </div>
-                <div class="post-content">
+                <div class="post-content uk-inline">
                     <?php  the_content(); //Content ?>
                     <?php
                     $args = array(
@@ -25,7 +26,7 @@ Template Name: Photos
                         'post_status' => 'inherit'
                     );
                     $top_query = new WP_Query( $args );                    ?>
-                    <div class="photo-list uk-child-width-1-3@m" uk-grid="masonry: true">
+                    <div class="photo-list uk-grid-small uk-child-width-1-3@m" uk-grid="masonry: true">
                         <?php if ( $top_query->have_posts() ) : while ( $top_query->have_posts() ) : $top_query->the_post(); ?>
                             <div>
                                 <a href="<?php the_permalink(); ?>">
