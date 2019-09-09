@@ -283,9 +283,7 @@ footer {
 /*-- photo page
 ------------------------------ */
 .photo-list .post-title {
-	color: #FFF;
-	font-weight: bold;
-    font-size: 1rem;
+    font-size: .75rem;
 }
 /*-- contact
 ------------------------------ */

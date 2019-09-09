@@ -1,12 +1,4 @@
 $(function($){
-    // slick slider top
-    $('.firstview').slick({
-        autoplay: true,
-        autoplaySpeed: 5000,
-        fade: true,
-        arrows: false,
-        cssEase: 'linear'
-    });
 
     // Page top
     $("#page-top").hide();

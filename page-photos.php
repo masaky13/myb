@@ -21,11 +21,12 @@ Template Name: Photos
                 <div class="post-content uk-inline">
                     <?php  the_content(); //Content ?>
                     <?php
-                    $args = array(
-                        'post_type' => 'attachment',
-                        'post_status' => 'inherit'
-                    );
-                    $top_query = new WP_Query( $args );                    ?>
+                        $args = array(
+                            'post_type' => 'attachment',
+                            'post_status' => 'inherit'
+                        );
+                        $top_query = new WP_Query( $args );
+                    ?>
                     <div class="photo-list uk-grid-small uk-child-width-1-3@m" uk-grid="masonry: true">
                         <?php if ( $top_query->have_posts() ) : while ( $top_query->have_posts() ) : $top_query->the_post(); ?>
                             <div>
@@ -39,8 +40,8 @@ Template Name: Photos
                                             <img data-src="<?php echo get_template_directory_uri(); ?>/images/no-image.jpg" alt="no image" title="no image" class="lazyload">
                                         <?php endif; ?>
                                     </div>
-                                    <div class="post-info uk-position-center uk-text-center"><?php //.post-info ?>
-                                        <h3 class="post-title uk-card-title uk-padding">
+                                    <div class="post-info uk-text-meta"><?php //.post-info ?>
+                                        <h3 class="post-title">
                                             <?php if( wp_is_mobile() ) : ?>
                                                 <?php echo text_ellipsis( get_the_title(), 27 ); ?>
                                             <?php else: ?>
