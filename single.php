@@ -8,7 +8,7 @@
     <article>
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <div id="post-<?php the_ID(); ?>" class="post">
-            <div class="post-image"><?php //.post-image ?>
+            <div class="post-image uk-margin-small-bottom"><?php //.post-image ?>
                 <?php if ( has_post_thumbnail() ): // サムネイルを持っているときの処理 ?>
                     <?php $icatch = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'); ?>
                     <img data-src="<?php echo $icatch[0]; ?>" class="lazyload" />
@@ -21,11 +21,11 @@
                     <h1 class="post-title"><?php the_title(); ?></h1>
 
                     <div class="post-meta uk-text-meta uk-margin-small-bottom">
-						<span class="post-date uk-margin-small-right" itemprop="datePublished" datetime="<?php echo esc_attr( get_the_date( DATE_ISO8601 ) ); ?>"><?php the_time('Y/m/d'); ?></span>
-						<?php echo get_post_category(); ?>
-						<span class="post-pageviews uk-margin-small-right">ビュー：<?php echo get_post_meta( get_the_ID(), 'pageviews', true ); ?></span>
+                        <span class="post-date uk-margin-small-right" itemprop="datePublished" datetime="<?php echo esc_attr( get_the_date( DATE_ISO8601 ) ); ?>"><?php the_time('Y/m/d'); ?></span>
+                        <?php echo get_post_category(); ?>
+                        <span class="post-pageviews uk-margin-small-right">ビュー：<?php echo get_post_meta( get_the_ID(), 'pageviews', true ); ?></span>
                         <?php echo share_post_sns(); ?>
-					</div>
+                    </div>
                     <?php echo get_post_author(); ?>
                 </div>
                 <div class="post-content">

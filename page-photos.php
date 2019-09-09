@@ -31,7 +31,7 @@ Template Name: Photos
                         <?php if ( $top_query->have_posts() ) : while ( $top_query->have_posts() ) : $top_query->the_post(); ?>
                             <div>
                                 <a href="<?php the_permalink(); ?>">
-                                    <div class="post-image"><?php //.post-image ?>
+                                    <div class="post-image uk-margin-small"><?php //.post-image ?>
                                         <?php $icatch = wp_get_attachment_image_src( get_the_ID(), 'large'); ?>
                                         <?php if ( $icatch !== '' ): // サムネイルを持っているときの処理 ?>
                                             <?php $icatch = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'); ?>
