@@ -36,7 +36,9 @@ if( !is_admin() ) {
             'url' => home_url(),
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
             'term' => $term,
-            'taxonomy' => $taxonomy
+            'taxonomy' => $taxonomy,
+            'paged' => get_query_var( 'paged' ),
+            'template' => get_page_template()
         );
         wp_localize_script( 'custom', 'sitedata', $sitedata );
     }

@@ -9,7 +9,6 @@ $(function($){
     var found_posts = parseInt($('#found-posts').text());
     // 記事のローディング
     $("#post-list-more").on("click", function() {
-        var term = $('h1').text();
         var post_count = parseInt($('#post-count').text());
         thiselm = $(this);
         thiselm_html = thiselm.html();
@@ -20,7 +19,8 @@ $(function($){
             data: {
                 'action': 'ajax_loadpost',
                 'term': sitedata.term,
-                'paged': paged
+                'paged': paged,
+                'template': sitedata.template
             },
             timeout: 10000,
             success: function(data) {
@@ -32,7 +32,7 @@ $(function($){
                   post_count = found_posts;
               }
               $('#post-count').text(post_count);
-              thiselm.before(data);
+              thiselm.prev().append(data);
               thiselm.html(thiselm_html);
             },
             error: function(xhr, textStatus, error) {
