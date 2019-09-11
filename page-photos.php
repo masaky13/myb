@@ -10,7 +10,7 @@ Template Name: Photos
 <main>
     <article>
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <div id="post-<?php the_ID(); ?>" class="post photo-page">
+        <div id="post-<?php the_ID(); ?>" class="post page-photo">
             <div class="post-body uk-padding-small">
                 <div class="post-header uk-margin-bottom">
                     <h1 class="post-title uk-text-center"><?php the_title(); ?></h1>

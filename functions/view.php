@@ -322,7 +322,7 @@ function share_post_sns() {
     $url =  get_permalink();
     $discript = rawurlencode( get_the_title() );
 
-    $ht .= '<ul class="share-sns uk-flex uk-flex-right uk-grid-small uk-margin uk-text-center">';
+    $ht .= '<ul class="share-sns uk-flex uk-flex-right uk-grid-small uk-text-center">';
     $ht .= '<li><a class="facebook" href="http://www.facebook.com/sharer.php?u='. $url .'&amp;t='. $discript .'" target="_blank" rel="nofollow" title="Facebookで共有" uk-icon="facebook"></a></li>';
     $ht .= '<li><a class="twitter" href="https://twitter.com/share?url='. $url .'&amp;text='. $discript .'" data-text='. $discript .' target="_blank" rel="nofollow" title="Twitterで共有" uk-icon="twitter"></a></li>';
     $ht .= '<li><a class="linelink" href="http://line.me/R/msg/text/?'. $discript .'%0D%0A'. $url .'" target="_blank" rel="nofollow">LINE</a></li>';
