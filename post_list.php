@@ -17,15 +17,15 @@
             </a>
         </div>
         <div class="post-info"><?php //.post-info ?>
-            <h3 class="post-title"><a href="<?php the_permalink(); ?>">
+            <h3 class="post-title uk-margin-small"><a href="<?php the_permalink(); ?>">
                 <?php if( wp_is_mobile() ) : ?>
                     <?php echo text_ellipsis( get_the_title(), 26 ); ?>
                 <?php else: ?>
                     <?php echo text_ellipsis( get_the_title(), 32 ); ?>
                 <?php endif; ?>
             </a></h3>
-            <span class="post-date uk-text-meta uk-margin-small-right" itemprop="datePublished" datetime="<?php the_time('Y/m'); ?>"><?php the_time('Y/m'); ?></span>
-            <span class="post-categories uk-text-meta"><?php echo get_post_category(); ?></span>
+            <span class="post-date text-meta text-meta-barline" itemprop="datePublished" datetime="<?php the_time('Y/m'); ?>"><?php the_time('Y/m'); ?></span>
+            <span class="post-categories text-meta"><?php echo get_post_category(); ?></span>
         </div>
     </div>
 <?php endwhile;

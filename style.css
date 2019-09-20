@@ -11,7 +11,7 @@ Version: 2019-05-31
 4.main
 4-.post_list
 ------------------------------ */
-/*縲memo
+/*memo
 
 /*-- base setting
 ------------------------------ */
@@ -27,6 +27,7 @@ body {
     color: #353235;
     background: #f4f1ed;
     background-image: url("./images/meyabe-background.jpg");
+	background-attachment: fixed;
 }
 h1, h2, h3, h4, a {
     font-family: "游明朝","Yu Mincho","Century Gothic", "ヒラギノ明朝 Pro W3 Pro W3", Hiragino Mincho Pro, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif !important;
@@ -36,7 +37,7 @@ h1, h2, h3, h4, a {
 }
 h2 {
     color: #353235;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 h3 {
     font-size: 1rem;
@@ -47,8 +48,14 @@ h4 {
 p {
     margin: 0 0 1rem;
     padding: 0;
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 0.8rem;
+	letter-spacing: .1rem;
+    line-height: 1.6rem;
+}
+@media only screen and (min-width: 1020px) {
+	p {
+		font-size: 1rem;
+	}
 }
 ol, ul, li {
     margin: 0;
@@ -179,6 +186,9 @@ footer {
     font-size: .8em;
     line-height: 1.1em;
 }
+.breadcrumb a {
+	color: #695056;
+}
 .breadcrumb li {
     float: left;
 }
@@ -246,6 +256,11 @@ footer {
 .post-category {
     color: #c9b9a1;
 }
+@media only screen and (min-width: 768px) {
+	.post-title {
+		font-size: 1.1rem;
+	}
+}
 
 /*-- archive
 ------------------------------ */
@@ -262,9 +277,10 @@ footer {
 }
 .post .post-content h2 {
 	margin: 15px 0;
-    padding: 0 0 5px;
+    padding: 0 0 0 5px;
     font-weight: bold;
-    border-bottom: 1px solid #4e3c33;
+	border-left: solid 3px #b7a696;
+	background: linear-gradient( transparent 70%,#f5f2ed 80% );
 }
 .post-nav {
     margin: 15px 0;
@@ -304,6 +320,100 @@ footer {
 
 /*-- leyouts
 ------------------------------ */
+.icon-arrow-right a::after {
+    position: relative;
+    padding: 0 0 0 .5em;
+    font-family: "Material Icons";
+    content: "chevron_right";
+    top: 0;
+    left: 0;
+    transition: all .2s linear;
+}
+.icon-arrow-right a:hover::after {
+    left: 5px;
+}
+.icon-arrow-left a::before {
+    position: relative;
+    padding: 0 .5em 0 0;
+    font-family: "Material Icons";
+    content: "chevron_left";
+    top: 0;
+    left: 0;
+    transition: all .2s linear;
+}
+.icon-arrow-left a:hover::before {
+    left: -5px;
+}
+.icon-arrow-down a::after {
+    position: relative;
+    padding: 0 0 0 .5em;
+    font-family: "Material Icons";
+    content: "expand_more";
+    top: 2px;
+    left: 0;
+    transition: all .2s linear;
+}
+.icon-arrow-down a:hover::after {
+    top: 7px;
+}
+.more-toggle {
+	color: #836455;
+}
+.more-toggle::after{
+	color: #836455;
+}
+.text-meta {
+	font-size: 0.775rem;
+}
+.text-meta-barline {
+	margin: 0 1rem 0 0;
+	padding: 0 1rem 0 0;
+	border-right: 1px solid #b2b2b2;
+}
+
+.border-bottomline {
+	padding: 0 0 5px;
+	border-bottom: solid 2px #ddc7dc;
+	position: relative;
+}
+.border-bottomline:after {
+	position: absolute;
+	content: " ";
+	display: block;
+	border-bottom: solid 2px #422d40;
+	bottom: -2px;
+	width: 18%;
+}
+.h2design {
+	position: relative;
+    padding: 5px 30px 5px 35px;
+    text-align: center;
+}
+.h2design:before {
+	position: absolute;
+    content: '';
+    left: 9px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 20px #544751;
+    border-bottom: solid 30px transparent;
+    z-index: 1;
+}
+
+.h2design:after {
+	position: absolute;
+    content: '';
+    right: 14px;
+    top: 10px;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 25px #544751;
+    z-index: 1;
+}
 
 @keyframes fade {
     0% {opacity: 0;}
@@ -328,25 +438,6 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-.c-cover {
-    position: relative;
-}
-.c-cover div {
-    position: relative;
-    z-index: 30;
-}
-.c-cover::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(60,60,60,.4);
-    z-index: 20;
-    transition: all .2s linear;
 }
 .list-style-slash span,
 .list-style-slash a {
@@ -383,56 +474,11 @@ footer {
 .link-style-boxshadow:hover a {
     box-shadow: 0px 0px 10px 2px rgba(20, 20, 20, .4);
 }
-.link-style-trmimage a {
-    overflow: hidden;
-    display: block;
-    position: relative;
-    width: 100%;
-}
-.link-style-trmimage a::after {
-    content: "";
-    display: block;
-    padding-top: 70%;
-}
-.link-style-trmimage a img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-.link-style-trmimage.trmimage-cover a img {
-    object-fit: cover;
-    object-position: 50% 0;
-}
 .link-style-fill {
     display: inline-block;
     padding: 2px 6px;
     color: #FFF;
     background: #5386ba;
-}
-.icon-arrow-right a::after {
-    position: relative;
-    padding: 0 0 0 .5em;
-    font-family: "Material Icons";
-    content: "chevron_right";
-    top: 0;
-    left: 0;
-    transition: all .2s linear;
-}
-.icon-arrow-right a:hover::after {
-    left: 5px;
-}
-.icon-arrow-left a::before {
-    position: relative;
-    padding: 0 .5em 0 0;
-    font-family: "Material Icons";
-    content: "chevron_left";
-    top: 0;
-    left: 0;
-    transition: all .2s linear;
-}
-.icon-arrow-left a:hover::before {
-    left: -5px;
 }
 .hover-zoom:hover img {
     transform: scale(1.2);

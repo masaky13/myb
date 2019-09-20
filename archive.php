@@ -6,9 +6,9 @@
 <div class="content" uk-grid>
 <main class="uk-width-2-3@l">
     <article>
-        <section class="article uk-padding-small">
+        <section class="article uk-margin">
             <h1><?php echo get_archve_title(); ?></h1>
-            <!-- <span> (<?php echo $wp_query->found_posts; ?>)</span> -->
+            <?php echo get_archve_meta(); ?>
         </section>
         <?php get_template_part( 'post_list' ); ?>
     </article>

@@ -4,7 +4,15 @@ require_once('functions/init.php');
 require_once('functions/view.php');
 require_once('functions/ajax.php');
 
-//スマートフォンを判別
+add_action('init', 'disable_author_archive_query');
+function disable_author_archive_query() {
+  if( preg_match('/author=([0-9]*)/i', $_SERVER['QUERY_STRING']) ){
+    wp_redirect( home_url() );
+    exit;
+  }
+}
+
+////スマートフォンを判別
 function is_mobile(){
     $useragents = array(
         'iPhone', // iPhone

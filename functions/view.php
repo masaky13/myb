@@ -287,15 +287,30 @@ function get_archve_title() {
     } elseif( is_year() ) {
         $title = get_the_time( 'Y年' );
     } elseif( is_author() ) {
-        $title = esc_html( get_queried_object()->display_name );
+        $author_id = get_the_author_meta( 'ID' );
+        $title = '<img class="uk-border-circle uk-padding-small" width="120" height="120" src="'. get_user_avatar_img( $author_id ) .'">';
+        $title .= esc_html( get_queried_object()->display_name );
     } elseif( isset( $_GET['paged'] ) && !empty( $_GET['paged'] ) ) {
         $title = 'Archive';
     }
     return $title;
 }
 
+function get_archve_meta() {
+    $title_meta = '';
+    if( is_author() ) {
+        $title_meta = '<div class="uk-padding-small">';
+        $title_meta .= '<p><span class="uk-margin-small-right">'. get_the_author_posts() .' 記事</span></p>';
+        $author_descr = get_the_author_meta( 'description' );
+        if( !empty( $author_descr ) ) {
+            $title_meta .= '<div class="profile"><p>'. $author_descr .'</p></div>';
+        }
+        $title_meta .= '</div>';
+    }
+    return $title_meta;
+}
+
 function text_ellipsis( $text, $count ) {
-    // 謖�ｮ壽枚蟄玲焚繧定ｶ�∴縺溷ｴ蜷域栢邊句�逅
     if ( mb_strlen ( strip_tags ( $text ), 'utf-8' ) > $count ){
         $text = mb_substr( str_replace( '&nbsp;', ' ', strip_tags( $text ) ), 0, $count ) . '...';
     }
@@ -330,102 +345,6 @@ function share_post_sns() {
     return $ht;
 }
 
-// 記事一覧　works_introduce
-// 固定ページのタイトルに、categoryのslugを入力して入稿すると固定ページの内容を表示させる処理
-function works_introduce() {
-    $ht = '';
-    $taxonomy = 'category';
-    $queried_object = get_queried_object();
-    if( $queried_object->parent !== 0 ) {
-        // 子categoryの場合の処理
-        $parentslug = get_category( $queried_object->parent )->slug;
-        $page = get_page_by_title( $parentslug );
-    } elseif( $queried_object->parent === 0 ) {
-        // 親categoryの場合の処理
-        $page = get_page_by_title( $queried_object->slug );
-    } else {
-        // それ以外の処理
-        $page = '';
-    }
-    if( !empty( $page ) ) {
-        $ht .= '<div class="works-fee container">';
-        $ht .= wpautop( $page->post_content );
-
-        $names = get_post_meta( $page->ID, 'fee_names', true );
-        $prices = get_post_meta( $page->ID, 'fee_prices', true );
-        $options = get_post_meta( $page->ID, 'fee_options', true );
-
-        if( !empty( $names ) || !empty( $prices ) ) {
-            $ht .= '<div class="works-fee-table container">';
-            foreach( $names as $key => $name ) {
-                $ht .= '<div class="row">';
-                $ht .=   '<div class="column column-40">';
-                $ht .=     '<p>'. $name .'</p>';
-                $ht .=   '</div>';
-                $ht .=   '<div class="column column-60 prices">';
-                if( $options[$key]['req'] === 'is-on' ) {
-                    $ht .= '<p>要お問合せ</p>';
-                } elseif( !empty( $prices[$key] ) ) {
-                    $nami = '';
-                    if( $options[$key]['nami'] === 'is-on' ) {
-                        $nami = '～';
-                    }
-                    if( $options[$key]['tax'] === 'is-on' ) {
-                        $prices[$key] = preg_replace( '/[^0-9]/' ,'' , $prices[$key] );
-                        $prices[$key] = $prices[$key] * 1.08;
-                        $prices[$key] = number_format( $prices[$key] );
-                    }
-                    $ht .= '<p>￥'. $prices[$key] . $nami .'</p>';
-                }
-                $ht .=   '</div>';
-                $ht .= '</div>';
-            }
-            $ht .= '</div>';
-        }
-        $ht .= '<p>御見積もりのご依頼、ご相談は<a href="'. home_url( 'contact' ) .'">お問合せフォーム</a>よりご連絡くださいませ。</p>';
-        $ht .= '</div>';
-    }
-    return $ht;
-}
-
-// 記事一覧　カテゴリメニュー
-function term_child_directly( $taxonomy ) {
-    global $excludes;
-    $ht = '';
-    $args = array(
-        'orderby' => 'menu_order',
-        'exclude' => $excludes,
-        'hide_empty' => false,
-        'parent' => 0,
-        'taxonomy' => $taxonomy
-    );
-    $categories = get_categories( $args );
-    if( !empty( $categories ) ) {
-        $ht .= '<div class="archive-menu container"><h3>Produced</h3>';
-        $ht .= '<div class="row">';
-        foreach( $categories as $category ) {
-            $ht .= '<div class="column">';
-            $ht .= '<div><p class="link-style-border '. $category->slug .'"><a href="'. get_category_link( $category->term_id ) .'">'. $category->name .'</a></p>';
-            $params = array( // 親カテゴリIDから子カテゴリーを取得
-                'orderby' => 'menu_order',
-                'parent' => $category->term_id,
-                'hide_empty' => false,
-            );
-            $cat_childs = get_categories( $params );
-            if( $cat_childs ) {
-                $ht .= '<div class="category-child">';
-                foreach( $cat_childs as $cat_child ) {
-                    $ht .= '<p class="link-style-border '. $category->slug .'-child ' . $cat_child->slug .'"><a href="'. get_category_link( $cat_child->term_id ) .'">'. $cat_child->name .'</a></p>';
-                }
-                $ht .= '</div>';
-            }
-            $ht .= '</div></div>';
-        }
-        $ht .= '</div></div>';
-    }
-    return $ht;
-}
-
 // categoryの取得
 function get_post_category() {
     global $excludes;
@@ -436,9 +355,9 @@ function get_post_category() {
             if( !in_array( $category->cat_ID, $excludes ) ) {
                 if( $category->parent != 0 ) {
                     $parent = get_term( $category->parent );
-                    $ht .= '<span class="post-category '. $parent->slug .' uk-margin-small-right"><a href="'. get_category_link( $category->parent ) .'">'.  $parent->name .'</a></span>';
+                    $ht .= '<span class="post-category text-meta '. $parent->slug .' uk-margin-small-left"><a href="'. get_category_link( $category->parent ) .'">'.  $parent->name .'</a></span>';
                 }
-                $ht .= '<span class="post-category '. $category->slug .' uk-margin-small-right"><a href="'. get_category_link( $category->cat_ID ) .'">'. $category->cat_name . '</a></span>';
+                $ht .= '<span class="post-category text-meta '. $category->slug .' uk-margin-small-left"><a href="'. get_category_link( $category->cat_ID ) .'">'. $category->cat_name . '</a></span>';
             }
         }
     }
@@ -446,22 +365,26 @@ function get_post_category() {
 }
 // authorの取得
 function get_post_author() {
-    $author_id = get_the_author_meta( 'ID' );
     $html = '';
-    $html .= '<div class="post-author uk-card uk-card-default">';
-    $html .= '<div class="uk-card-header uk-padding-small"><div class="uk-grid-small" uk-grid>';
-    $html .= '<div class="uk-width-auto"><img class="uk-border-circle" width="50" height="50" src="'. get_user_avatar_img( $author_id ) .'"></div>';
-    $html .= '<div class="uk-width-expand">';
-    $html .= '<h2 class="uk-card-title"><a href="'. get_the_author_meta( 'user_url' ) .'">'. get_the_author_meta( 'nickname' ) .'</a></h2>';
-    $html .= '<span class="uk-text-meta uk-margin-small-right">記事数：'. get_the_author_posts() .'</span>';
-    $html .= '</div>';
-    $html .= '</div></div>';
-    $author_descr = get_the_author_meta( 'description' );
-    if( !empty( $author_descr ) ) {
-        $html .= '<div class="uk-card-body uk-padding-small"><p class="profile uk-text-meta">'. $author_descr .'</p></div>';
+    if( is_single() || is_author() ) {
+        $author_id = get_the_author_meta( 'ID' );
+        $html = '';
+        $html .= '<div class="post-author uk-card uk-card-default">';
+        $html .= '<div class="uk-card-header uk-padding-small"><div class="uk-grid-small" uk-grid>';
+        $html .= '<div class="uk-width-auto"><img class="uk-border-circle" width="50" height="50" src="'. get_user_avatar_img( $author_id ) .'"></div>';
+        $html .= '<div class="uk-width-expand">';
+        $html .= '<h2 class="uk-card-title"><a href="'. get_author_posts_url( $author_id ) .'">'. get_the_author_meta( 'nickname' ) .'</a></h2>';
+        $html .= '<span class="uk-text-meta uk-margin-small-right">記事数：'. get_the_author_posts() .'</span>';
+        $html .= '</div>';
+        $html .= '</div></div>';
+        $author_descr = get_the_author_meta( 'description' );
+        if( !empty( $author_descr ) ) {
+            $html .= '<div class="uk-text-center icon-arrow-down"><a href="" class="more-toggle" uk-toggle="target: #profile-more; animation: uk-animation-fade">MORE</a></div>';
+            $html .= '<div id="profile-more" class="uk-card-body uk-padding-small" hidden><p class="profile uk-text-meta">'. $author_descr .'</p></div>';
+        }
+        $html .= '</div>';
+        $html .= '';
     }
-    $html .= '</div>';
-    $html .= '';
     return $html;
 }
 //ユーザーアバター取得
@@ -491,75 +414,3 @@ function or_get_terms( $taxonomy ) {
     return $ht;
 }
 
-// About view sections
-function view_profile() {
-    global $post;
-    // var_dump(  );
-    $profile_name = get_post_meta( $post->ID, 'profile_name', true );
-    $profile_summary = get_post_meta( $post->ID, 'profile_summary', true );
-    $profile_hobbies = get_post_meta( $post->ID, 'profile_hobbies', true );
-    $profile_image = get_post_meta( $post->ID, 'profile_image', true );
-    if( $profile_name !== '' || $profile_summary !== '' ) {
-        $ht = '<section class="profile"><div class="container none-edge"><div class="row">';
-        // image
-        if( !empty( $profile_image ) ) {
-            $ht .= '<div class="column profile-image c-cover"><img class="objectfit lazyload" data-src="'. $profile_image .'" alt="profile"></div>';
-        }
-        // title
-        $ht .= '<div class="column"><div class="title">';
-        if( $profile_name !== '' ) {
-            $ht .= '<h2>'. $profile_name .'</h2>';
-        }
-        if( $profile_summary !== '' ) {
-            $ht .= '<p>'. $profile_summary .'</p>';
-            $ht .= '<div class="profile-info list-style-slash"><p><span>千葉県出身</span><span>O型</span><span>ふたご座</span></p></div>';
-        }
-        if( $profile_hobbies !== '' ) {
-            $ht .= '<p>Hobbies</p>';
-            $ht .= '<div class="profile-info list-style-slash"><p>';
-            foreach( $profile_hobbies as $hobby ) {
-                $ht .= '<span>'. $hobby .'</span>';
-            }
-            $ht .= '</p></div>';
-        }
-        $ht .= '</div></div>';
-        $ht .= '</div></div></section>';
-    }
-    return $ht;
-}
-
-function view_skills() {
-    global $post;
-    $names = get_post_meta( $post->ID, 'skill_names', true );
-    $parcents = get_post_meta( $post->ID, 'skill_parcents', true );
-    $summaries = get_post_meta( $post->ID, 'skill_summaries', true );
-    $careeries = get_post_meta( $post->ID, 'skill_careeries', true );
-
-    if( !empty( $names ) || !empty( $parcents ) || !empty( $summaries ) ) {
-        $ht = '<section class="skills"><div class="container"><h2>Skills</h2>';
-        foreach( $names as $key => $name ) {
-            $ht .= '<div class="row skill">';
-            $ht .= '<div class="column column-20">';
-            $ht .= '<p>'. $name .'</p>';
-            $ht .= '</div>';
-            $ht .= '<div class="column column-80">';
-            if( $parcents[$key] !== '' ) {
-                $ht .= '<div class="row"><div class="column column-'. $parcents[$key] .' skill-percent"><p>'. $parcents[$key] .'</p></div></div>';
-            }
-            if( $careeries[$key] !== '' || $summaries[$key] !== '' ) {
-                $ht .= '<div class="skill-description">';
-                if( $careeries[$key] !== '' ) {
-                    $ht .= '<p>経験年数：'. $careeries[$key] .'年</p>';
-                }
-                if( $summaries[$key] !== '' ) {
-                    $ht .= '<p>'. $summaries[$key] .'</p>';
-                }
-                $ht .= '</div>';
-            }
-            $ht .= '</div>';
-            $ht .= '</div>';
-        }
-        $ht .= '</div></section>';
-    }
-    return $ht;
-}

@@ -16,16 +16,19 @@
                     <img data-src="<?php echo get_template_directory_uri(); ?>/images/no-image.jpg" alt="no image" title="no image" class="lazyload">
                 <?php endif; ?>
             </div>
+			<?php echo share_post_sns(); ?>
             <div class="post-body uk-padding-small">
                 <div class="post-header uk-margin-bottom">
                     <h1 class="post-title"><?php the_title(); ?></h1>
-
-                    <div class="post-meta uk-text-meta uk-margin-small-bottom">
-                        <span class="post-date uk-margin-small-right" itemprop="datePublished" datetime="<?php echo esc_attr( get_the_date( DATE_ISO8601 ) ); ?>"><?php the_time('Y/m/d'); ?></span>
-                        <?php echo get_post_category(); ?>
-                        <span class="post-pageviews uk-margin-small-right">ビュー：<?php echo get_post_meta( get_the_ID(), 'pageviews', true ); ?></span>
-                        <?php echo share_post_sns(); ?>
-                    </div>
+					<div class="uk-flex uk-margin-bottom">
+						<div class="post-date uk-width-1-3">
+							<span class="text-meta" itemprop="datePublished" datetime="<?php echo esc_attr( get_the_date( DATE_ISO8601 ) ); ?>"><?php the_time('Y/m/d'); ?></span>
+	<!--                         <span class="post-pageviews uk-margin-small-right">ビュー：<?php echo get_post_meta( get_the_ID(), 'pageviews', true ); ?></span> -->
+						</div>
+						<div class="post-meta uk-width-2-3 uk-text-right">
+							<?php echo get_post_category(); ?>
+						</div>
+					</div>
                     <?php echo get_post_author(); ?>
                 </div>
                 <div class="post-content">

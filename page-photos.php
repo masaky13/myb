@@ -28,7 +28,7 @@ Template Name: Photos
                         $top_query = new WP_Query( $args );
                     ?>
                     <?php if ( $top_query->have_posts() ) : ?>
-                        <div class="photo-list uk-grid-small uk-child-width-1-3@m uk-margin" uk-grid="masonry: true">
+                        <div class="photo-list uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m uk-margin" uk-grid="masonry: true">
                             <?php
                                 while ( $top_query->have_posts() ) : $top_query->the_post();
                                     get_template_part( 'photo_list' );
