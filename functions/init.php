@@ -175,6 +175,16 @@ function save_post_fields( $post_id ) {
     }
 }
 
+/* user_setting
+* ---------------------------------------- */
+add_filter( 'user_contactmethods', 'add_userinfo', 10, 1);
+function add_userinfo( $user_info ){
+    //項目の追加
+    $user_info['twitter'] = 'twitter';
+    $user_info['instagram'] = 'instagram';
+    return $user_info;
+}
+
 /**
  * 初期画面設定でデフォルト値を設定する
  *

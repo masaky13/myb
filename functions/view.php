@@ -374,7 +374,17 @@ function get_post_author() {
         $html .= '<div class="uk-width-auto"><img class="uk-border-circle" width="50" height="50" src="'. get_user_avatar_img( $author_id ) .'"></div>';
         $html .= '<div class="uk-width-expand">';
         $html .= '<h2 class="uk-card-title"><a href="'. get_author_posts_url( $author_id ) .'">'. get_the_author_meta( 'nickname' ) .'</a></h2>';
-        $html .= '<span class="uk-text-meta uk-margin-small-right">記事数：'. get_the_author_posts() .'</span>';
+        $html .= '<div class="uk-flex">';
+        $html .= '<div class="uk-width-1-3"><span class="uk-text-meta uk-margin-small-right">記事数：'. get_the_author_posts() .'</span></div>';
+        $html .= '<div class="uk-width-2-3 uk-text-right">';
+        if( !empty( get_the_author_meta( 'twitter' ) ) ) {
+            $html .= '<a href="https://twitter.com/'. get_the_author_meta( 'twitter' ) .'" target="_brank" uk-icon="twitter"></a>';
+        }
+        if( !empty( get_the_author_meta( 'instagram' ) ) ) {
+            $html .= '<a href="https://www.instagram.com/'. get_the_author_meta( 'instagram' ) .'" target="_brank" uk-icon="isntagram"></a>';
+        }
+        $html .= '</div>';
+        $html .= '</div>';
         $html .= '</div>';
         $html .= '</div></div>';
         $author_descr = get_the_author_meta( 'description' );
